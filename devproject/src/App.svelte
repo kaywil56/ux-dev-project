@@ -1,6 +1,7 @@
 <script>
   import { onMount } from "svelte";
   import Student from "./lib/Student.svelte";
+  import Tally from "./lib/Tally.svelte";
 
   const RANDOM_USER_API_URL = "https://randomuser.me/api/?results=";
   const USER_AMOUNT = 15;
@@ -15,10 +16,11 @@
 </script>
 
 <main>
+  <Tally />
   <ul>
     {#each students as student, idx}
       <li>
-        <Student student={student} idx={idx} />
+        <Student {student} {idx} />
       </li>
     {/each}
   </ul>
