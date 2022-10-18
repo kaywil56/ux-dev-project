@@ -1,5 +1,6 @@
 <script>
   import { onMount } from "svelte";
+  import Student from "./lib/Student.svelte";
 
   const RANDOM_USER_API_URL = "https://randomuser.me/api/?results=";
   const USER_AMOUNT = 15;
@@ -15,9 +16,9 @@
 
 <main>
   <ul>
-    {#each students as student}
+    {#each students as student, idx}
       <li>
-        {student.name.first + " " + student.name.last}
+        <Student student={student} idx={idx} />
       </li>
     {/each}
   </ul>
