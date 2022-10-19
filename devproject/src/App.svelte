@@ -6,7 +6,7 @@
   import SideBarInfo from "./lib/SideBarInfo.svelte";
 
   const RANDOM_USER_API_URL = "https://randomuser.me/api/?results=";
-  const USER_AMOUNT = 30;
+  const USER_AMOUNT = 10;
 
   let selectedMarkAll;
 
@@ -15,7 +15,8 @@
     let studentList = await res.json();
     studentList = studentList.results;
     $students = studentList;
-    console.log($students)
+    // Sort students by first name accending on load
+    $students = $students.sort((a, b) => a["name"]["first"].localeCompare(b["name"]["first"]));
   });
 
   const sortStudents = (sortBy) => {

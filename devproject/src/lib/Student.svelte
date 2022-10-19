@@ -7,8 +7,10 @@
 
   let statusInput;
 
-  $: if(statusInput){
-    $tally[idx] = statusInput
+  $: console.log(statusInput)
+
+  $: if (statusInput) {
+    $tally[idx] = statusInput;
   }
 </script>
 
@@ -38,7 +40,17 @@
       checked={selectedMarkAll == "absent"}
     />
     <label for="absent-radio-button-{idx}">Absent</label>
-    <input
+    <select
+      bind:value={statusInput}
+      name="more-options"
+      id="more-options-select"
+    >
+      <option selected>--More options--</option>
+      <option selected={selectedMarkAll == 'online'} value={"online"}>Online</option>
+      <option selected={selectedMarkAll == 'sick'} value={"sick"}>Sick</option>
+      <option selected={selectedMarkAll == 'explained'} value={"explained"}>Explained</option>
+    </select>
+    <!-- <input
       type="radio"
       id="present-radio-button-{idx}"
       name="status-radio-grp-{idx}"
@@ -54,5 +66,6 @@
       checked={selectedMarkAll == "sick"}
     />
     <label for="absent-radio-button-{idx}">Sick</label>
-  </td>
-</tr>
+  </td> -->
+  </td></tr
+>
