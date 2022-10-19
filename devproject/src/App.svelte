@@ -15,7 +15,14 @@
     let studentList = await res.json();
     studentList = studentList.results;
     $students = studentList;
+    console.log($students)
   });
+
+  const sortStudents = () => {
+    console.log("clicked")
+    $students = $students.sort((a, b) => a.name.first.localeCompare(b.name.first));
+    console.log($students)
+  }
 </script>
 
 <main>
@@ -27,6 +34,7 @@
     </header>
     <button id="cancel-btn">Class Cancelled</button>
     <button on:click={() => selectedMarkAll = undefined } id="clear-btn">Clear All</button>
+    <button on:click={() => sortStudents()}>Sort by first name</button>
     <select
       bind:value={selectedMarkAll}
       name="mark-all-as"
