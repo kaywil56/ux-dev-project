@@ -11,4 +11,4 @@
   $: neutralCount = $tally.filter((x) => x == "neutral").length;
 </script>
 
-<p>Postive: {positiveCount} | Negative: {negativeCount} | Neutral: {neutralCount}</p>
+<p>Tally: Postive: {positiveCount} | Negative: {negativeCount} | Neutral: {neutralCount}</p>

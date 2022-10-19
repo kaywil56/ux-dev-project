@@ -16,6 +16,11 @@
 </script>
 
 <main>
+  <header>
+    <h1>Programming 2 - Semester 2</h1>
+    <p>Week 8 | Class 2</p>
+    <time>20/04/2000</time>
+  </header>
   <Tally />
   <ul>
     {#each students as student, idx}
