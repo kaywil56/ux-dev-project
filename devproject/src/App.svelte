@@ -25,7 +25,8 @@
       <p>Week 8 | Class 2</p>
       <time>20/04/2000</time>
     </header>
-    <button id=cancel-btn>Class Cancelled</button>
+    <button id="cancel-btn">Class Cancelled</button>
+    <button on:click={() => selectedMarkAll = undefined } id="clear-btn">Clear All</button>
     <select
       bind:value={selectedMarkAll}
       name="mark-all-as"
