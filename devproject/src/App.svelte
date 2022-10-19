@@ -1,5 +1,6 @@
 <script>
   import { onMount } from "svelte";
+  import { students } from "./store";
   import Student from "./lib/Student.svelte";
   import Tally from "./lib/Tally.svelte";
   import SideBarInfo from "./lib/SideBarInfo.svelte";
@@ -7,12 +8,12 @@
   const RANDOM_USER_API_URL = "https://randomuser.me/api/?results=";
   const USER_AMOUNT = 30;
 
-  let students = [];
-
   onMount(async () => {
     const res = await fetch(RANDOM_USER_API_URL + USER_AMOUNT);
-    students = await res.json();
-    students = students.results;
+    let studentList = await res.json();
+    studentList = studentList.results;
+    $students = studentList
+    console.log($students)
   });
 </script>
 
@@ -36,10 +37,8 @@
         </tr>
       </thead>
       <tbody>
-        {#each students as student, idx}
-          <tr>
-            <Student {student} {idx} />
-          </tr>
+        {#each $students as student, idx}
+          <Student {student} {idx} />
         {/each}
       </tbody>
     </table>
