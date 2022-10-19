@@ -22,14 +22,23 @@
     <time>20/04/2000</time>
   </header>
   <Tally />
-  <ul>
-    {#each students as student, idx}
-      <li>
-        <Student {student} {idx} />
-      </li>
-    {/each}
-  </ul>
+  <table>
+    <thead>
+      <tr>
+        <th colspan="2">Students</th>
+      </tr>
+      <tr>
+        <th>First name</th>
+        <th>Last Name</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      {#each students as student, idx}
+        <tr>
+          <Student {student} {idx} />
+        </tr>
+      {/each}
+    </tbody>
+  </table>
 </main>
-
-<style>
-</style>

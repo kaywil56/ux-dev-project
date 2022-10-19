@@ -5,9 +5,13 @@
   export let idx;
 </script>
 
-{student.name.first + " " + student.name.last}
-<fieldset>
-  <legend>Status</legend>
+<td>
+  {student.name.first}
+</td>
+<td>
+  {student.name.last}
+</td>
+<td>
   <input
     type="radio"
     id="present-radio-button-{idx}"
@@ -35,5 +39,5 @@
     name="status-radio-grp-{idx}"
     on:click={() => ($tally[idx] = "neutral")}
   />
-  <label for="absent-radio-button-{idx}">Sick</label>  
-</fieldset>
+  <label for="absent-radio-button-{idx}">Sick</label>
+</td>
