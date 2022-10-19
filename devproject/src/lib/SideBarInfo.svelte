@@ -14,7 +14,10 @@
     <p>Phone: {thisPerson.phone}</p>
     <p>Cell: {thisPerson.cell}</p>
     <p>DOB: {thisPerson.dob.date} ({thisPerson.dob.age})</p>
-    <address>Street: {thisPerson.location.street.number} {thisPerson.location.street.name}</address>
+    <address>
+      Street: {thisPerson.location.street.number}
+      {thisPerson.location.street.name}
+    </address>
     <address>State: {thisPerson.location.state}</address>
     <address>Postcode: {thisPerson.location.postcode}</address>
   {:else}

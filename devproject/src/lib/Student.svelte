@@ -5,7 +5,7 @@
   export let idx;
   export let selectedMarkAll;
 
-  $: console.log(selectedMarkAll)
+  $: console.log(selectedMarkAll);
 </script>
 
 <tr on:click={() => ($currentStudent = idx)}>

@@ -26,7 +26,11 @@
       <p>Week 8 | Class 2</p>
       <time>20/04/2000</time>
     </header>
-    <select bind:value={selectedMarkAll} name="mark-all-as" id="mark-all-as-select">
+    <select
+      bind:value={selectedMarkAll}
+      name="mark-all-as"
+      id="mark-all-as-select"
+    >
       <option>--Mark all as--</option>
       <option value={"present"}>Present</option>
       <option value={"absent"}>Absent</option>
