@@ -18,9 +18,9 @@
     console.log($students)
   });
 
-  const sortStudents = () => {
+  const sortStudents = (sortBy) => {
     console.log("clicked")
-    $students = $students.sort((a, b) => a.name.first.localeCompare(b.name.first));
+    $students = $students.sort((a, b) => a["name"][sortBy].localeCompare(b["name"][sortBy]));
     console.log($students)
   }
 </script>
@@ -34,7 +34,8 @@
     </header>
     <button id="cancel-btn">Class Cancelled</button>
     <button on:click={() => selectedMarkAll = undefined } id="clear-btn">Clear All</button>
-    <button on:click={() => sortStudents()}>Sort by first name</button>
+    <button on:click={() => sortStudents("first")}>Sort by first name</button>
+    <button on:click={() => sortStudents("last")}>Sort by last name</button>
     <select
       bind:value={selectedMarkAll}
       name="mark-all-as"
