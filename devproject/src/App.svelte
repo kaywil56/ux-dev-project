@@ -15,7 +15,6 @@
     let studentList = await res.json();
     studentList = studentList.results;
     $students = studentList;
-    console.log($students);
   });
 </script>
 
@@ -26,6 +25,7 @@
       <p>Week 8 | Class 2</p>
       <time>20/04/2000</time>
     </header>
+    <button id=cancel-btn>Class Cancelled</button>
     <select
       bind:value={selectedMarkAll}
       name="mark-all-as"

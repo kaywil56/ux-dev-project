@@ -5,7 +5,11 @@
   export let idx;
   export let selectedMarkAll;
 
-  $: console.log(selectedMarkAll);
+  let statusInput;
+
+  $: if(statusInput){
+    $tally[idx] = statusInput
+  }
 </script>
 
 <tr on:click={() => ($currentStudent = idx)}>
@@ -20,7 +24,8 @@
       type="radio"
       id="present-radio-button-{idx}"
       name="status-radio-grp-{idx}"
-      on:click={() => ($tally[idx] = "positive")}
+      bind:group={statusInput}
+      value="present"
       checked={selectedMarkAll == "present"}
     />
     <label for="present-radio-button-{idx}">Present</label>
@@ -28,7 +33,8 @@
       type="radio"
       id="absent-radio-button-{idx}"
       name="status-radio-grp-{idx}"
-      on:click={() => ($tally[idx] = "negative")}
+      bind:group={statusInput}
+      value={"absent"}
       checked={selectedMarkAll == "absent"}
     />
     <label for="absent-radio-button-{idx}">Absent</label>
