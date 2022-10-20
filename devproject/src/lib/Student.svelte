@@ -19,6 +19,9 @@
     {student.name.last}
   </td>
   <td>
+    {student.history[0]}
+  </td>
+  <td>
     <input
       type="radio"
       id="present-radio-button-{idx}"
@@ -51,5 +54,4 @@
         >Explained</option
       >
     </select>
-  </td></tr
->
+  </td></tr>

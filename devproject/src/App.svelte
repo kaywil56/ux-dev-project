@@ -9,10 +9,8 @@
   const USER_AMOUNT = 10;
   const STATUSES = ["present", "sick", "online", "absent"];
 
-  const WEEK_AMOUNT = 16;
-  const CLASSES_PER_WEEK = 2;
-  const CLASSSES_TOTAL = WEEK_AMOUNT * CLASSES_PER_WEEK;
-  const CURRENT_CLASS = 16;
+  const WEEKS_TOTAL = 16;
+  const CURRENT_WEEK = 8;
 
   let selectedMarkAll;
 
@@ -30,19 +28,24 @@
       student["status"] = undefined;
     });
 
-    let currentHistory = []
+    let classes;
+    let class1;
+    let class2;
 
     // Initialize a students attendance history with random statuses
     for (let i = 0; i < USER_AMOUNT; i++) {
-      for (let j = 0; j < CLASSSES_TOTAL; j++) {
-        if(j < CURRENT_CLASS){
-          currentHistory = [...currentHistory, STATUSES[Math.floor(Math.random() * STATUSES.length)]]
+      classes = []
+      for (let j = 0; j < WEEKS_TOTAL; j++) {
+        if(j < CURRENT_WEEK - 1){
+          class1 = STATUSES[Math.floor(Math.random() * STATUSES.length)]
+          class2 = STATUSES[Math.floor(Math.random() * STATUSES.length)]
+          classes = [...classes, [class1, class2]]
         }
         else{
-          currentHistory = [...currentHistory, undefined]
+          classes = [...classes, [undefined, undefined]]
         }
       }
-      $students[i].history = currentHistory;
+      $students[i].history = classes;
     }
   });
 
@@ -75,7 +78,7 @@
   <section>
     <header>
       <h1>Programming 2 - Semester 2</h1>
-      <p>Week {CURRENT_CLASS / 2} | Class 2</p>
+      <p>Week {CURRENT_WEEK} of {WEEKS_TOTAL} | Class 1</p>
       <time>20/04/2000</time>
     </header>
     <button id="cancel-btn">Class Cancelled</button>
@@ -103,6 +106,7 @@
         <tr>
           <th>First name</th>
           <th>Last Name</th>
+          <th>Attendance history</th>
           <th>Status</th>
         </tr>
       </thead>
@@ -118,7 +122,8 @@
 
 <style>
   main {
-    display: grid;
-    grid-template-columns: 3fr 1fr;
+    display: flex;
+    justify-content: space-between;
+    /* grid-template-columns: 3fr 1fr; */
   }
 </style>

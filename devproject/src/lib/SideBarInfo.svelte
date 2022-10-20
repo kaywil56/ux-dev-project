@@ -1,28 +1,35 @@
 <script>
   import { students, currentStudent } from "../store";
+  import AttendanceHistory from "./AttendanceHistory.svelte";
 
   $: thisPerson = $students[$currentStudent]; //Reactive to change in person coming from sidebar via store
 </script>
 
 <section>
   <h2>Profile</h2>
+  <div id="sidebar">    
   {#if thisPerson}
-    <p>{thisPerson.name.first + " " + thisPerson.name.last}</p>
-    <p>Student ID: {thisPerson.login.uuid.slice(0, 6)}</p>
-    <p>Username: {thisPerson.login.username}</p>
-    <address>Email: {thisPerson.email}</address>
-    <p>Phone: {thisPerson.phone}</p>
-    <p>Cell: {thisPerson.cell}</p>
-    <p>DOB: {thisPerson.dob.date} ({thisPerson.dob.age})</p>
-    <address>
-      Street: {thisPerson.location.street.number}
-      {thisPerson.location.street.name}
-    </address>
-    <address>State: {thisPerson.location.state}</address>
-    <address>Postcode: {thisPerson.location.postcode}</address>
+    <AttendanceHistory studentHistory={thisPerson.history} />
+    <div>
+      <img src={thisPerson.picture.large} alt="profile">
+      <p>{thisPerson.name.first + " " + thisPerson.name.last}</p>
+      <p>Student ID: {thisPerson.login.uuid.slice(0, 6)}</p>
+      <p>Username: {thisPerson.login.username}</p>
+      <address>Email: {thisPerson.email}</address>
+      <p>Phone: {thisPerson.phone}</p>
+      <p>Cell: {thisPerson.cell}</p>
+      <p>DOB: {thisPerson.dob.date} ({thisPerson.dob.age})</p>
+      <address>
+        Street: {thisPerson.location.street.number}
+        {thisPerson.location.street.name}
+      </address>
+      <address>State: {thisPerson.location.state}</address>
+      <address>Postcode: {thisPerson.location.postcode}</address>
+    </div>
   {:else}
     <h2>No student selected</h2>
   {/if}
+</div>
 </section>
 
 <style>
@@ -32,4 +39,9 @@
     position: sticky;
     top: 0;
   }
+
+  #sidebar{
+    display: flex;
+  }
+
 </style>
