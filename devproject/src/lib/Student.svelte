@@ -41,7 +41,7 @@
       name="more-options"
       id="more-options-select"
     >
-      <option selected>--More options--</option>
+      <option value={undefined} selected>--More options--</option>
       <option selected={selectedMarkAll == "online"} value={"online"}
         >Online</option
       >

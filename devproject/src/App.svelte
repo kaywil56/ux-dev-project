@@ -23,6 +23,8 @@
     $students.forEach((student) => {
       student["status"] = undefined;
     });
+
+    console.log($students)
   });
 
   // Sort table ascending by given param
@@ -35,7 +37,9 @@
   // Fill down values from the select student idx
   const fillDown = () => {
     for (let i = $currentStudent; i < USER_AMOUNT; i++) {
-      $students[i].status = $students[$currentStudent].status;
+      if($students[i].status == undefined){
+        $students[i].status = $students[$currentStudent].status;
+      }
     }
   };
 </script>
