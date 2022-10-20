@@ -1,6 +1,6 @@
 <script>
   import { onMount } from "svelte";
-  import { students, tally } from "./store";
+  import { students, currentStudent } from "./store";
   import Student from "./lib/Student.svelte";
   import Tally from "./lib/Tally.svelte";
   import SideBarInfo from "./lib/SideBarInfo.svelte";
@@ -15,15 +15,29 @@
     let studentList = await res.json();
     studentList = studentList.results;
     $students = studentList;
-    // Sort students by first name accending on load
-    $students = $students.sort((a, b) => a["name"]["first"].localeCompare(b["name"]["first"]));
+    // Sort students by first name ascending on load
+    $students = $students.sort((a, b) =>
+      a["name"]["first"].localeCompare(b["name"]["first"])
+    );
+    // Init a status field for each student
+    $students.forEach((student) => {
+      student["status"] = undefined;
+    });
   });
 
+  // Sort table ascending by given param
   const sortStudents = (sortBy) => {
-    console.log("clicked")
-    $students = $students.sort((a, b) => a["name"][sortBy].localeCompare(b["name"][sortBy]));
-    console.log($students)
-  }
+    $students = $students.sort((a, b) =>
+      a["name"][sortBy].localeCompare(b["name"][sortBy])
+    );
+  };
+
+  // Fill down values from the select student idx
+  const fillDown = () => {
+    for (let i = $currentStudent; i < USER_AMOUNT; i++) {
+      $students[i].status = $students[$currentStudent].status;
+    }
+  };
 </script>
 
 <main>
@@ -34,9 +48,12 @@
       <time>20/04/2000</time>
     </header>
     <button id="cancel-btn">Class Cancelled</button>
-    <button on:click={() => selectedMarkAll = undefined } id="clear-btn">Clear All</button>
+    <button on:click={() => (selectedMarkAll = undefined)} id="clear-btn"
+      >Clear All</button
+    >
     <button on:click={() => sortStudents("first")}>Sort by first name</button>
     <button on:click={() => sortStudents("last")}>Sort by last name</button>
+    <button on:click={() => fillDown()}>Fill down</button>
     <select
       bind:value={selectedMarkAll}
       name="mark-all-as"
