@@ -1,25 +1,22 @@
 <script>
-  import { currentStudent } from "../store.js";
-  import { onMount } from 'svelte'
+  import { currentStudent, tally } from "../store.js";
+  import { onMount } from "svelte";
 
   export let student;
   export let idx;
   export let selectedMarkAll;
 
-  // $: if (statusInput) {
-  //   $tally[idx] = statusInput;
-  // }
+  $: if (student.status) {
+    $tally[idx] = student.status;
+  }
 </script>
 
-<tr on:click={() => ($currentStudent = idx)}>
+<tr>
   <td>
     {student.name.first}
   </td>
   <td>
     {student.name.last}
-  </td>
-  <td>
-    {student.history[0]}
   </td>
   <td>
     <input
@@ -54,4 +51,17 @@
         >Explained</option
       >
     </select>
-  </td></tr>
+  </td></tr
+>
+
+<style>
+  td {
+    padding: 12px 15px;
+  }
+  tr:nth-of-type(even) {
+    background-color: #f2f2f2;
+  }
+  tr:hover{
+    background-color: rgb(206, 206, 206);
+  }
+</style>

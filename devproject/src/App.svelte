@@ -34,15 +34,14 @@
 
     // Initialize a students attendance history with random statuses
     for (let i = 0; i < USER_AMOUNT; i++) {
-      classes = []
+      classes = [];
       for (let j = 0; j < WEEKS_TOTAL; j++) {
-        if(j < CURRENT_WEEK - 1){
-          class1 = STATUSES[Math.floor(Math.random() * STATUSES.length)]
-          class2 = STATUSES[Math.floor(Math.random() * STATUSES.length)]
-          classes = [...classes, [class1, class2]]
-        }
-        else{
-          classes = [...classes, [undefined, undefined]]
+        if (j < CURRENT_WEEK - 1) {
+          class1 = STATUSES[Math.floor(Math.random() * STATUSES.length)];
+          class2 = STATUSES[Math.floor(Math.random() * STATUSES.length)];
+          classes = [...classes, [class1, class2]];
+        } else {
+          classes = [...classes, [undefined, undefined]];
         }
       }
       $students[i].history = classes;
@@ -98,24 +97,25 @@
       <option value={"sick"}>Sick</option>
     </select>
     <Tally />
-    <table>
-      <thead>
-        <tr>
-          <th colspan="2">Students</th>
-        </tr>
-        <tr>
-          <th>First name</th>
-          <th>Last Name</th>
-          <th>Attendance history</th>
-          <th>Status</th>
-        </tr>
-      </thead>
-      <tbody>
-        {#each $students as student, idx}
-          <Student {student} {idx} {selectedMarkAll} />
-        {/each}
-      </tbody>
-    </table>
+    <form action="/">
+      <table>
+        <thead>
+          <tr>
+            <th colspan="3">Students</th>
+          </tr>
+          <tr>
+            <th>First name</th>
+            <th>Last Name</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          {#each $students as student, idx}
+            <Student on:click={() => ($currentStudent = idx)} {student} {idx} {selectedMarkAll} />
+          {/each}
+        </tbody>
+      </table>
+    </form>
   </section>
   <SideBarInfo />
 </main>
@@ -125,5 +125,29 @@
     display: flex;
     justify-content: space-between;
     /* grid-template-columns: 3fr 1fr; */
+  }
+  th {
+    padding: 20px 15px;
+    text-align: left;
+    font-weight: 500;
+    font-size: 12px;
+    text-transform: uppercase;
+    padding: 12px 15px;
+  }
+  table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    min-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  }
+  thead tr:first-child {
+    background-color: rgb(0,82,255);
+    color: #ffffff;
+    text-align: left;
+  }
+  thead tr:nth-child(2) {
+    background-color: rgb(219, 215, 215);
+    text-align: left;
   }
 </style>
