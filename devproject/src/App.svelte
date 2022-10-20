@@ -7,6 +7,12 @@
 
   const RANDOM_USER_API_URL = "https://randomuser.me/api/?results=";
   const USER_AMOUNT = 10;
+  const STATUSES = ["present", "sick", "online", "absent"];
+
+  const WEEK_AMOUNT = 16;
+  const CLASSES_PER_WEEK = 2;
+  const CLASSSES_TOTAL = WEEK_AMOUNT * CLASSES_PER_WEEK;
+  const CURRENT_CLASS = 16;
 
   let selectedMarkAll;
 
@@ -24,7 +30,20 @@
       student["status"] = undefined;
     });
 
-    console.log($students)
+    let currentHistory = []
+
+    // Initialize a students attendance history with random statuses
+    for (let i = 0; i < USER_AMOUNT; i++) {
+      for (let j = 0; j < CLASSSES_TOTAL; j++) {
+        if(j < CURRENT_CLASS){
+          currentHistory = [...currentHistory, STATUSES[Math.floor(Math.random() * STATUSES.length)]]
+        }
+        else{
+          currentHistory = [...currentHistory, undefined]
+        }
+      }
+      $students[i].history = currentHistory;
+    }
   });
 
   // Sort table ascending by given param
@@ -37,7 +56,7 @@
   // Fill down values from the select student idx
   const fillDown = () => {
     for (let i = $currentStudent; i < USER_AMOUNT; i++) {
-      if($students[i].status == undefined){
+      if ($students[i].status == undefined) {
         $students[i].status = $students[$currentStudent].status;
       }
     }
@@ -45,19 +64,18 @@
 
   // Clear all student statuses
   const clearAll = () => {
-    selectedMarkAll = undefined
-    for(let i = 0; i < USER_AMOUNT; i++){
-      $students[i].status = undefined
-    } 
+    selectedMarkAll = undefined;
+    for (let i = 0; i < USER_AMOUNT; i++) {
+      $students[i].status = undefined;
+    }
   };
-
 </script>
 
 <main>
   <section>
     <header>
       <h1>Programming 2 - Semester 2</h1>
-      <p>Week 8 | Class 2</p>
+      <p>Week {CURRENT_CLASS / 2} | Class 2</p>
       <time>20/04/2000</time>
     </header>
     <button id="cancel-btn">Class Cancelled</button>

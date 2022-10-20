@@ -1,5 +1,6 @@
 <script>
   import { currentStudent } from "../store.js";
+  import { onMount } from 'svelte'
 
   export let student;
   export let idx;
