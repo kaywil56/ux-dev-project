@@ -6,9 +6,10 @@
 
   // Whenever the tally changes, re-count the amount of positives, negatives and neutrals
   // in the tally store
-  $: positiveCount = $tally.filter((status) => status == "positive").length;
-  $: negativeCount = $tally.filter((status) => status == "negative").length;
-  $: neutralCount = $tally.filter((status) => status == "neutral").length;
+
+  $: positiveCount = $tally.filter((status) => status == "present" || status == "online" || status == "canceled").length;
+  $: negativeCount = $tally.filter((status) => status == "absent").length;
+  $: neutralCount = $tally.filter((status) => status == "sick" || status == "explained").length;
 </script>
 
 <p>
