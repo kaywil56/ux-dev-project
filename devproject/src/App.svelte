@@ -13,6 +13,7 @@
   const CURRENT_WEEK = 8;
 
   let selectedMarkAll;
+  let searchValue;
 
   onMount(async () => {
     const res = await fetch(RANDOM_USER_API_URL + USER_AMOUNT);
@@ -68,16 +69,18 @@
     for (let i = 0; i < USER_AMOUNT; i++) {
       $students[i].status = "canceled";
     }
-  }
+  };
 
   // Clear all student statuses
   const clearAll = () => {
     selectedMarkAll = undefined;
-    $tally = []
+    $tally = [];
     for (let i = 0; i < USER_AMOUNT; i++) {
       $students[i].status = undefined;
     }
   };
+
+  $: console.log(searchValue);
 </script>
 
 <header>
@@ -85,16 +88,13 @@
   <p>Week {CURRENT_WEEK} of {WEEKS_TOTAL} | Class 1</p>
   <time>20/04/2000</time>
 </header>
+<input bind:value={searchValue} type="text" placeholder="Search for a student." />
 <button on:click={() => cancelClass()} id="cancel-btn">Class Cancelled</button>
 <button on:click={() => clearAll()} id="clear-btn">Clear All</button>
 <button on:click={() => sortStudents("first")}>Sort by first name</button>
 <button on:click={() => sortStudents("last")}>Sort by last name</button>
 <button on:click={() => fillDown()}>Fill down</button>
-<select
-  bind:value={selectedMarkAll}
-  name="mark-all-as"
-  id="mark-all-as-select"
->
+<select bind:value={selectedMarkAll} name="mark-all-as" id="mark-all-as-select">
   <option>--Mark all as--</option>
   <option value={"present"}>Present</option>
   <option value={"absent"}>Absent</option>
@@ -103,29 +103,35 @@
 </select>
 <Tally />
 <main>
-      <form action="/">
-        <table>
-          <thead>
-            <tr>
-              <th colspan="4">Students</th>
-            </tr>
-            <tr>
-              <th>First name</th>
-              <th>Last Name</th>
-              <th>Status</th>
-              <th>Selected status</th>
-            </tr>
-          </thead>
-          <tbody>
-            {#each $students as student, idx}
+  <form action="/">
+    <table>
+      <thead>
+        <tr>
+          <th colspan="4">Students</th>
+        </tr>
+        <tr>
+          <th>First name</th>
+          <th>Last Name</th>
+          <th>Status</th>
+          <th>Selected status</th>
+        </tr>
+      </thead>
+      <tbody>
+        {#each $students as student, idx}
+          {#if searchValue}
+            {#if (student.name.first + " " + student.name.last).includes(searchValue)}
               <Student {student} {idx} {selectedMarkAll} />
-            {/each}
-          </tbody>
-        </table>
-        <button>Finish later</button>
-        <button>submit attendance</button>
-      </form>
-      <SideBarInfo />
+            {/if}
+          {:else}
+            <Student {student} {idx} {selectedMarkAll} />
+          {/if}
+        {/each}
+      </tbody>
+    </table>
+    <button>Finish later</button>
+    <button>submit attendance</button>
+  </form>
+  <SideBarInfo />
 </main>
 
 <style>
