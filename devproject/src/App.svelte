@@ -107,7 +107,7 @@
     <table>
       <thead>
         <tr>
-          <th colspan="5">Students</th>
+          <th colspan="6">Students</th>
         </tr>
         <tr>
           <th>First name</th>
@@ -115,6 +115,7 @@
           <th>Student ID</th>
           <th>Status</th>
           <th>Selected status</th>
+          <th>More details</th>
         </tr>
       </thead>
       <tbody>
@@ -138,6 +139,7 @@
 <style>
   main {
     display: flex;
+    justify-content: space-around;
     /* display: grid;
     justify-content: space-evenly;
     grid-template-columns: 1fr 1fr; */
