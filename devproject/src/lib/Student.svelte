@@ -2,7 +2,7 @@
   import { currentStudent, tally } from "../store.js";
 
   export let student;
-  export let idx;
+  export let idx
   export let selectedMarkAll
 
   $: if (student.status) {
