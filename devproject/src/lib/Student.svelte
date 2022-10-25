@@ -3,7 +3,7 @@
 
   export let student;
   export let idx;
-  export let selectedMarkAll;
+  export let selectedMarkAll
 
   $: if (student.status) {
     $tally[idx] = student.status;
