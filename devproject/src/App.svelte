@@ -64,6 +64,12 @@
     }
   };
 
+  const cancelClass = () => {
+    for (let i = 0; i < USER_AMOUNT; i++) {
+      $students[i].status = "canceled";
+    }
+  }
+
   // Clear all student statuses
   const clearAll = () => {
     selectedMarkAll = undefined;
@@ -78,7 +84,7 @@
   <p>Week {CURRENT_WEEK} of {WEEKS_TOTAL} | Class 1</p>
   <time>20/04/2000</time>
 </header>
-<button id="cancel-btn">Class Cancelled</button>
+<button on:click={() => cancelClass()} id="cancel-btn">Class Cancelled</button>
 <button on:click={() => clearAll()} id="clear-btn">Clear All</button>
 <button on:click={() => sortStudents("first")}>Sort by first name</button>
 <button on:click={() => sortStudents("last")}>Sort by last name</button>
