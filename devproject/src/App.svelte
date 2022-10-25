@@ -107,11 +107,12 @@
     <table>
       <thead>
         <tr>
-          <th colspan="4">Students</th>
+          <th colspan="5">Students</th>
         </tr>
         <tr>
           <th>First name</th>
           <th>Last Name</th>
+          <th>Student ID</th>
           <th>Status</th>
           <th>Selected status</th>
         </tr>

@@ -18,6 +18,9 @@
     {student.name.last}
   </td>
   <td>
+    {student.login.uuid.slice(0, 6)}
+  </td>
+  <td>
     <input
       type="radio"
       id="present-radio-button-{idx}"
