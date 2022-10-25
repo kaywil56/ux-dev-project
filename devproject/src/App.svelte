@@ -80,7 +80,7 @@
     }
   };
 
-  $: console.log(searchValue);
+  $: console.log($tally);
 </script>
 
 <header>
@@ -129,7 +129,7 @@
       </tbody>
     </table>
     <button>Finish later</button>
-    <button>submit attendance</button>
+    <button disabled={$tally.length != USER_AMOUNT} type="submit">Submit attendance</button>
   </form>
   <SideBarInfo />
 </main>
@@ -166,4 +166,10 @@
     background-color: rgb(219, 215, 215);
     text-align: left;
   }
+  /* #all-attendance-marked{
+
+  }
+  #still-needs-attendance-marked{
+
+  } */
 </style>
