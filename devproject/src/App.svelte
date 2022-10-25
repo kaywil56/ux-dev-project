@@ -1,6 +1,6 @@
 <script>
   import { onMount } from "svelte";
-  import { students, currentStudent } from "./store";
+  import { students, currentStudent, tally } from "./store";
   import Student from "./lib/Student.svelte";
   import Tally from "./lib/Tally.svelte";
   import SideBarInfo from "./lib/SideBarInfo.svelte";
@@ -73,6 +73,7 @@
   // Clear all student statuses
   const clearAll = () => {
     selectedMarkAll = undefined;
+    $tally = []
     for (let i = 0; i < USER_AMOUNT; i++) {
       $students[i].status = undefined;
     }
@@ -129,9 +130,10 @@
 
 <style>
   main {
-    display: grid;
+    display: flex;
+    /* display: grid;
     justify-content: space-evenly;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr; */
   }
   th {
     padding: 20px 15px;
