@@ -6,13 +6,12 @@
 </script>
 
 <section>
-  <h2>Profile</h2>
   <div id="sidebar">    
   {#if thisPerson}
-    <AttendanceHistory studentHistory={thisPerson.history} />
     <div>
       <img src={thisPerson.picture.large} alt="profile">
       <p>{thisPerson.name.first + " " + thisPerson.name.last}</p>
+      <AttendanceHistory studentHistory={thisPerson.history} />
       <p>Student ID: {thisPerson.login.uuid.slice(0, 6)}</p>
       <p>Username: {thisPerson.login.username}</p>
       <address>Email: {thisPerson.email}</address>
@@ -33,12 +32,11 @@
 </section>
 
 <style>
-  section {
+  /* section {
     height: 100vh;
-    border: 1px solid #333;
     position: sticky;
     top: 0;
-  }
+  } */
 
   #sidebar{
     display: flex;

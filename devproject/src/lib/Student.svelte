@@ -1,6 +1,5 @@
 <script>
   import { currentStudent, tally } from "../store.js";
-  import { onMount } from "svelte";
 
   export let student;
   export let idx;
@@ -11,7 +10,7 @@
   }
 </script>
 
-<tr>
+<tr on:click={() => ($currentStudent = idx)}>
   <td>
     {student.name.first}
   </td>
@@ -51,7 +50,15 @@
         >Explained</option
       >
     </select>
-  </td></tr
+  </td>
+  <td>
+    {#if student.status}
+    {student.status}
+    {:else}
+    None selected
+    {/if}
+  </td>
+  </tr
 >
 
 <style>

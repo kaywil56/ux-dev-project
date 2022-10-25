@@ -35,7 +35,7 @@
     // Initialize a students attendance history with random statuses
     for (let i = 0; i < USER_AMOUNT; i++) {
       classes = [];
-      for (let j = 0; j < WEEKS_TOTAL; j++) {
+      for (let j = 0; j < CURRENT_WEEK; j++) {
         if (j < CURRENT_WEEK - 1) {
           class1 = STATUSES[Math.floor(Math.random() * STATUSES.length)];
           class2 = STATUSES[Math.floor(Math.random() * STATUSES.length)];
@@ -73,58 +73,59 @@
   };
 </script>
 
+<header>
+  <h1>Programming 2 - Semester 2</h1>
+  <p>Week {CURRENT_WEEK} of {WEEKS_TOTAL} | Class 1</p>
+  <time>20/04/2000</time>
+</header>
+<button id="cancel-btn">Class Cancelled</button>
+<button on:click={() => clearAll()} id="clear-btn">Clear All</button>
+<button on:click={() => sortStudents("first")}>Sort by first name</button>
+<button on:click={() => sortStudents("last")}>Sort by last name</button>
+<button on:click={() => fillDown()}>Fill down</button>
+<select
+  bind:value={selectedMarkAll}
+  name="mark-all-as"
+  id="mark-all-as-select"
+>
+  <option>--Mark all as--</option>
+  <option value={"present"}>Present</option>
+  <option value={"absent"}>Absent</option>
+  <option value={"online"}>Online</option>
+  <option value={"sick"}>Sick</option>
+</select>
+<Tally />
 <main>
-  <section>
-    <header>
-      <h1>Programming 2 - Semester 2</h1>
-      <p>Week {CURRENT_WEEK} of {WEEKS_TOTAL} | Class 1</p>
-      <time>20/04/2000</time>
-    </header>
-    <button id="cancel-btn">Class Cancelled</button>
-    <button on:click={() => clearAll()} id="clear-btn">Clear All</button>
-    <button on:click={() => sortStudents("first")}>Sort by first name</button>
-    <button on:click={() => sortStudents("last")}>Sort by last name</button>
-    <button on:click={() => fillDown()}>Fill down</button>
-    <select
-      bind:value={selectedMarkAll}
-      name="mark-all-as"
-      id="mark-all-as-select"
-    >
-      <option>--Mark all as--</option>
-      <option value={"present"}>Present</option>
-      <option value={"absent"}>Absent</option>
-      <option value={"online"}>Online</option>
-      <option value={"sick"}>Sick</option>
-    </select>
-    <Tally />
-    <form action="/">
-      <table>
-        <thead>
-          <tr>
-            <th colspan="3">Students</th>
-          </tr>
-          <tr>
-            <th>First name</th>
-            <th>Last Name</th>
-            <th>Status</th>
-          </tr>
-        </thead>
-        <tbody>
-          {#each $students as student, idx}
-            <Student on:click={() => ($currentStudent = idx)} {student} {idx} {selectedMarkAll} />
-          {/each}
-        </tbody>
-      </table>
-    </form>
-  </section>
-  <SideBarInfo />
+      <form action="/">
+        <table>
+          <thead>
+            <tr>
+              <th colspan="4">Students</th>
+            </tr>
+            <tr>
+              <th>First name</th>
+              <th>Last Name</th>
+              <th>Status</th>
+              <th>Selected status</th>
+            </tr>
+          </thead>
+          <tbody>
+            {#each $students as student, idx}
+              <Student {student} {idx} {selectedMarkAll} />
+            {/each}
+          </tbody>
+        </table>
+        <button>Finish later</button>
+        <button>submit attendance</button>
+      </form>
+      <SideBarInfo />
 </main>
 
 <style>
   main {
-    display: flex;
-    justify-content: space-between;
-    /* grid-template-columns: 3fr 1fr; */
+    display: grid;
+    justify-content: space-evenly;
+    grid-template-columns: 1fr 1fr;
   }
   th {
     padding: 20px 15px;
@@ -140,9 +141,10 @@
     font-size: 0.9em;
     min-width: 400px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    width: 100%;
   }
   thead tr:first-child {
-    background-color: rgb(0,82,255);
+    background-color: rgb(0, 82, 255);
     color: #ffffff;
     text-align: left;
   }
