@@ -130,7 +130,7 @@
         {/each}
       </tbody>
     </table>
-    <button>Finish later</button>
+    <button on:click|preventDefault>Finish later</button>
     <button disabled={$tally.length != USER_AMOUNT} type="submit">Submit attendance</button>
   </form>
   <SideBarInfo />

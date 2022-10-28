@@ -61,7 +61,7 @@
     None selected
     {/if}
   </td>
-  <td><button>View more</button></td>
+  <td><button on:click|preventDefault>View more</button></td>
   </tr
 >
 
