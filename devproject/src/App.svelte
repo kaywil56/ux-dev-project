@@ -93,8 +93,6 @@
       <button on:click|preventDefault={() => cancelClass()} id="cancel-btn"
         >Class Cancelled</button
       >
-      <button on:click|preventDefault={() => sortStudents("first")}>Sort by first name</button>
-      <button on:click|preventDefault={() => sortStudents("last")}>Sort by last name</button>
       <button on:click|preventDefault={() => fillDown()}>Fill down</button>
       <input
         class="input-field"
@@ -110,8 +108,8 @@
           <th id="t-header" colspan="7">Students</th>
         </tr>
         <tr>
-          <th>First name</th>
-          <th>Last Name</th>
+          <th on:click|preventDefault={() => sortStudents("first")}>First name</th>
+          <th on:click|preventDefault={() => sortStudents("last")}>Last Name</th>
           <th>Student ID</th>
           <th>Status</th>
           <th>Selected status</th>
@@ -129,15 +127,21 @@
         {/each}
       </tbody>
     </table>
-    <button on:click|preventDefault>Finish later</button>
-    <button disabled={$tally.length != USER_AMOUNT} type="submit"
-      >Submit attendance</button
-    >
+    <div id="finish-grp">
+      <button on:click|preventDefault>Finish later</button>
+      <button disabled={$tally.length != USER_AMOUNT} type="submit"
+        >Submit attendance</button
+      >
+    </div>
   </form>
   <SideBarInfo />
 </main>
 
 <style>
+  #finish-grp{
+    align-self: flex-end;
+    margin-top: 10px;
+  }
   #table-options {
     margin: 10px 0;
   }
@@ -158,6 +162,8 @@
     font-size: 12px;
     text-transform: uppercase;
     padding: 12px 15px;
+    cursor: pointer;
+    font-weight: bold;
   }
   table {
     border-collapse: collapse;
