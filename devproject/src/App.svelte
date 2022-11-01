@@ -82,9 +82,11 @@
 </script>
 
 <header>
-  <h1>Programming 2 - Semester 2</h1>
-  <p>Week {CURRENT_WEEK} of {WEEKS_TOTAL} | Class 1</p>
-  <time>20/04/2000</time>
+  <h1>Programming 2 (ID786)</h1>
+  <h2>Semester: 2</h2>
+  <p class="time-of-class"><b>Week: </b>{CURRENT_WEEK} of {WEEKS_TOTAL}</p>
+  <p class="time-of-class"><b>Class: </b>1</p>
+  <time class="time-of-class">20/04/2000</time>
 </header>
 <input
   bind:value={searchValue}
@@ -133,6 +135,9 @@
 </main>
 
 <style>
+  .time-of-class{
+    display: inline;
+  }
   main {
     display: flex;
     justify-content: space-around;
