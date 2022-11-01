@@ -86,20 +86,24 @@
   <p class="time-of-class"><b>Class: </b>1</p>
   <time class="time-of-class">20/04/2000</time>
 </header>
-<button on:click={() => cancelClass()} id="cancel-btn">Class Cancelled</button>
-<button on:click={() => clearAll()} id="clear-btn">Clear All</button>
-<button on:click={() => sortStudents("first")}>Sort by first name</button>
-<button on:click={() => sortStudents("last")}>Sort by last name</button>
-<button on:click={() => fillDown()}>Fill down</button>
 <Tally />
 <main>
   <form action="/">
-    <input
-      id="search-student"
-      bind:value={searchValue}
-      type="text"
-      placeholder="Search for a student."
-    />
+    <div id="table-options">
+      <button on:click|preventDefault={() => cancelClass()} id="cancel-btn"
+        >Class Cancelled</button
+      >
+      <button on:click|preventDefault={() => sortStudents("first")}>Sort by first name</button>
+      <button on:click|preventDefault={() => sortStudents("last")}>Sort by last name</button>
+      <button on:click|preventDefault={() => fillDown()}>Fill down</button>
+      <input
+        class="input-field"
+        bind:value={searchValue}
+        type="text"
+        placeholder="Search for a student."
+      />
+      <button on:click={() => clearAll()} id="clear-btn">Clear All</button>
+    </div>
     <table>
       <thead>
         <tr>
@@ -134,10 +138,8 @@
 </main>
 
 <style>
-  #search-student {
-    height: 20px;
-    padding: 2px 23px 2px 30px;
-    align-self: flex-end;
+  #table-options {
+    margin: 10px 0;
   }
   .time-of-class {
     display: inline;
@@ -173,8 +175,11 @@
     background-color: rgb(219, 215, 215);
     text-align: left;
   }
-  form{
+  form {
     display: flex;
     flex-direction: column;
+  }
+  #table-options {
+    display: flex;
   }
 </style>
