@@ -72,7 +72,6 @@
 
   // Clear all student statuses
   const clearAll = () => {
-    selectedMarkAll = undefined;
     $tally = [];
     for (let i = 0; i < USER_AMOUNT; i++) {
       $students[i].status = undefined;
@@ -103,7 +102,7 @@
     <table>
       <thead>
         <tr>
-          <th colspan="6">Students</th>
+          <th colspan="7">Students</th>
         </tr>
         <tr>
           <th>First name</th>
@@ -111,7 +110,6 @@
           <th>Student ID</th>
           <th>Status</th>
           <th>Selected status</th>
-          <th>More details</th>
         </tr>
       </thead>
       <tbody>

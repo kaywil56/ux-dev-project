@@ -9,7 +9,7 @@
   }
 </script>
 
-<tr on:click={() => ($currentStudent = idx)}>
+<tr id={$currentStudent == idx ? 'selected' : undefined } on:click={() => ($currentStudent = idx)}>
   <td>
     {student.name.first}
   </td>
@@ -54,7 +54,6 @@
       None selected
     {/if}
   </td>
-  <td><button on:click|preventDefault>View more</button></td>
 </tr>
 
 <style>
@@ -66,5 +65,9 @@
   }
   tr:hover {
     background-color: rgb(206, 206, 206);
+  }
+
+  #selected{
+    background-color: rgb(161, 161, 161);
   }
 </style>
