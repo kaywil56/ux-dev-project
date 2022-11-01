@@ -77,8 +77,6 @@
       $students[i].status = undefined;
     }
   };
-
-  $: console.log($tally);
 </script>
 
 <header>
@@ -88,11 +86,6 @@
   <p class="time-of-class"><b>Class: </b>1</p>
   <time class="time-of-class">20/04/2000</time>
 </header>
-<input
-  bind:value={searchValue}
-  type="text"
-  placeholder="Search for a student."
-/>
 <button on:click={() => cancelClass()} id="cancel-btn">Class Cancelled</button>
 <button on:click={() => clearAll()} id="clear-btn">Clear All</button>
 <button on:click={() => sortStudents("first")}>Sort by first name</button>
@@ -101,10 +94,16 @@
 <Tally />
 <main>
   <form action="/">
+    <input
+      id="search-student"
+      bind:value={searchValue}
+      type="text"
+      placeholder="Search for a student."
+    />
     <table>
       <thead>
         <tr>
-          <th colspan="7">Students</th>
+          <th id="t-header" colspan="7">Students</th>
         </tr>
         <tr>
           <th>First name</th>
@@ -117,7 +116,7 @@
       <tbody>
         {#each $students as student, idx}
           {#if searchValue}
-            {#if (student.name.first + " " + student.name.last).includes(searchValue)}
+            {#if (student.name.first.toUpperCase() + " " + student.name.last.toUpperCase()).includes(searchValue.toUpperCase())}
               <Student {student} {idx} />
             {/if}
           {:else}
@@ -135,7 +134,12 @@
 </main>
 
 <style>
-  .time-of-class{
+  #search-student {
+    height: 20px;
+    padding: 2px 23px 2px 30px;
+    align-self: flex-end;
+  }
+  .time-of-class {
     display: inline;
   }
   main {
@@ -155,7 +159,6 @@
   }
   table {
     border-collapse: collapse;
-    margin: 25px 0;
     font-size: 0.9em;
     min-width: 400px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
@@ -170,10 +173,8 @@
     background-color: rgb(219, 215, 215);
     text-align: left;
   }
-  /* #all-attendance-marked{
-
+  form{
+    display: flex;
+    flex-direction: column;
   }
-  #still-needs-attendance-marked{
-
-  } */
 </style>
