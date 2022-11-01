@@ -13,6 +13,8 @@
   const CURRENT_WEEK = 8;
 
   let searchValue;
+  let toggleSortFirstName = true;
+  let toggleSortLastName;
 
   onMount(async () => {
     const res = await fetch(RANDOM_USER_API_URL + USER_AMOUNT);
@@ -46,13 +48,21 @@
       }
       $students[i].history = classes;
     }
+
+    sortStudents('last', 'asc')
   });
 
   // Sort table ascending by given param
-  const sortStudents = (sortBy) => {
-    $students = $students.sort((a, b) =>
-      a["name"][sortBy].localeCompare(b["name"][sortBy])
-    );
+  const sortStudents = (sortBy, order) => {
+    if (order == "asc") {
+      $students = $students.sort((a, b) =>
+        a["name"][sortBy].localeCompare(b["name"][sortBy])
+      );
+    } else {
+      $students = $students.sort((a, b) =>
+        b["name"][sortBy].localeCompare(a["name"][sortBy])
+      );
+    }
   };
 
   // Fill down values from the select student idx
@@ -108,8 +118,20 @@
           <th id="t-header" colspan="7">Students</th>
         </tr>
         <tr>
-          <th on:click|preventDefault={() => sortStudents("first")}>First name</th>
-          <th on:click|preventDefault={() => sortStudents("last")}>Last Name</th>
+          <th
+            on:click={() => (toggleSortFirstName = !toggleSortFirstName)}
+            on:click|preventDefault={() =>
+              toggleSortFirstName
+                ? sortStudents("first", "asc")
+                : sortStudents("first", "desc")}>First name</th
+          >
+          <th
+            on:click={() => (toggleSortLastName = !toggleSortLastName)}
+            on:click|preventDefault={() =>
+              toggleSortLastName
+                ? sortStudents("last", "asc")
+                : sortStudents("last", "desc")}>Last Name</th
+          >
           <th>Student ID</th>
           <th>Status</th>
           <th>Selected status</th>
@@ -138,7 +160,7 @@
 </main>
 
 <style>
-  #finish-grp{
+  #finish-grp {
     align-self: flex-end;
     margin-top: 10px;
   }
