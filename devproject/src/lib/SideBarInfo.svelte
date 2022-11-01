@@ -6,29 +6,30 @@
 </script>
 
 <section>
-  <div id="sidebar">    
-  {#if thisPerson}
-    <div>
-      <img src={thisPerson.picture.large} alt="profile">
-      <p>{thisPerson.name.first + " " + thisPerson.name.last}</p>
-      <AttendanceHistory studentHistory={thisPerson.history} />
-      <p>Student ID: {thisPerson.login.uuid.slice(0, 6)}</p>
-      <p>Username: {thisPerson.login.username}</p>
-      <address>Email: {thisPerson.email}</address>
-      <p>Phone: {thisPerson.phone}</p>
-      <p>Cell: {thisPerson.cell}</p>
-      <p>DOB: {thisPerson.dob.date} ({thisPerson.dob.age})</p>
-      <address>
-        Street: {thisPerson.location.street.number}
-        {thisPerson.location.street.name}
-      </address>
-      <address>State: {thisPerson.location.state}</address>
-      <address>Postcode: {thisPerson.location.postcode}</address>
-    </div>
-  {:else}
-    <h2>No student selected</h2>
-  {/if}
-</div>
+  <div id="sidebar">
+    {#if thisPerson}
+      <div>
+        <img src={thisPerson.picture.large} alt="profile" />
+        <h2>{thisPerson.name.first + " " + thisPerson.name.last}</h2>
+        <AttendanceHistory studentHistory={thisPerson.history} />
+        <p><b>Student ID: </b>{thisPerson.login.uuid.slice(0, 6)}</p>
+        <p><b>Username:</b>{thisPerson.login.username}</p>
+        <address><b>Email: </b> {thisPerson.email}</address>
+        <p><b>Phone: </b> {thisPerson.phone}</p>
+        <p><b>Cell: </b> {thisPerson.cell}</p>
+        <p><b>DOB: </b>{thisPerson.dob.date} ({thisPerson.dob.age})</p>
+        <address>
+          <b>Street: </b>
+          {thisPerson.location.street.number}
+          {thisPerson.location.street.name}
+        </address>
+        <address><b>State: </b> {thisPerson.location.state}</address>
+        <address><b>Postcode: </b> {thisPerson.location.postcode}</address>
+      </div>
+    {:else}
+      <h2>No student selected</h2>
+    {/if}
+  </div>
 </section>
 
 <style>
@@ -38,8 +39,7 @@
     top: 0;
   } */
 
-  #sidebar{
+  #sidebar {
     display: flex;
   }
-
 </style>
