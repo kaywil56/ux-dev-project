@@ -2,8 +2,7 @@
   import { currentStudent, tally } from "../store.js";
 
   export let student;
-  export let idx
-  export let selectedMarkAll
+  export let idx;
 
   $: if (student.status) {
     $tally[idx] = student.status;
@@ -27,7 +26,6 @@
       name="status-radio-grp-{idx}"
       bind:group={student.status}
       value="present"
-      checked={selectedMarkAll == "present"}
     />
     <label for="present-radio-button-{idx}">Present</label>
     <input
@@ -36,7 +34,6 @@
       name="status-radio-grp-{idx}"
       bind:group={student.status}
       value={"absent"}
-      checked={selectedMarkAll == "absent"}
     />
     <label for="absent-radio-button-{idx}">Absent</label>
     <select
@@ -45,25 +42,20 @@
       id="more-options-select"
     >
       <option value={undefined} selected>--More options--</option>
-      <option selected={selectedMarkAll == "online"} value={"online"}
-        >Online</option
-      >
-      <option selected={selectedMarkAll == "sick"} value={"sick"}>Sick</option>
-      <option selected={selectedMarkAll == "explained"} value={"explained"}
-        >Explained</option
-      >
+      <option value={"online"}>Online</option>
+      <option value={"sick"}>Sick</option>
+      <option value={"explained"}>Explained</option>
     </select>
   </td>
   <td>
     {#if student.status}
-    {student.status}
+      {student.status}
     {:else}
-    None selected
+      None selected
     {/if}
   </td>
   <td><button on:click|preventDefault>View more</button></td>
-  </tr
->
+</tr>
 
 <style>
   td {
@@ -72,7 +64,7 @@
   tr:nth-of-type(even) {
     background-color: #f2f2f2;
   }
-  tr:hover{
+  tr:hover {
     background-color: rgb(206, 206, 206);
   }
 </style>
