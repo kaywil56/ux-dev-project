@@ -8,7 +8,10 @@
   }
 </script>
 
-<tr id={$currentStudent == idx ? 'selected' : undefined } on:click={() => ($currentStudent = idx)}>
+<tr
+  id={$currentStudent == idx ? "selected" : undefined}
+  on:click={() => ($currentStudent = idx)}
+>
   <td>
     {student.name.first}
   </td>
@@ -18,23 +21,25 @@
   <td>
     {student.login.uuid.slice(0, 6)}
   </td>
-  <td>
-    <input
-      type="radio"
-      id="present-radio-button-{idx}"
-      name="status-radio-grp-{idx}"
-      bind:group={student.status}
-      value="present"
-    />
-    <label for="present-radio-button-{idx}">Present</label>
-    <input
-      type="radio"
-      id="absent-radio-button-{idx}"
-      name="status-radio-grp-{idx}"
-      bind:group={student.status}
-      value={"absent"}
-    />
-    <label for="absent-radio-button-{idx}">Absent</label>
+  <td class="status-td">
+    <label for="present-radio-button-{idx}"
+      >Present <input
+        type="radio"
+        id="present-radio-button-{idx}"
+        name="status-radio-grp-{idx}"
+        bind:group={student.status}
+        value="present"
+      /></label
+    >
+    <label for="absent-radio-button-{idx}"
+      >Absent <input
+        type="radio"
+        id="absent-radio-button-{idx}"
+        name="status-radio-grp-{idx}"
+        bind:group={student.status}
+        value={"absent"}
+      /></label
+    >
     <select
       bind:value={student.status}
       name="more-options"
@@ -56,6 +61,11 @@
 </tr>
 
 <style>
+  .status-td {
+    display: flex;
+    flex-wrap: wrap;
+    /* flex-direction: column; */
+  }
   td {
     padding: 12px 15px;
   }
@@ -66,7 +76,7 @@
     background-color: rgb(206, 206, 206);
   }
 
-  #selected{
+  #selected {
     background-color: rgb(161, 161, 161);
   }
 </style>

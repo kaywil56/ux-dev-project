@@ -1,5 +1,6 @@
 <script>
   import { onMount } from "svelte";
+  import { fade } from 'svelte/transition';
     export let close;
   let time = 0;
   let start_calling;
@@ -9,25 +10,23 @@
 
   const showPopUp = () => {
     // start time update after popup modal show
-    start_calling = setInterval(countdownTime, 250); // call every one sec
+    start_calling = setInterval(countdownTime, 1000); // call every one sec
   };
 
   const countdownTime = () => {
     time++;
-    if (time == 10) {
+    if (time == 2) {
       clearInterval(start_calling); // stop calling
       close()
     }
   };
 </script>
 
-<div>Dialog</div>
+<p transition:fade>Saved</p>
 
 <style>
-  div {
-    z-index: 100;
-    position: absolute;
-    top: 50%;
-    left: 50%;
+  p{
+    color: green;
+    display: inline;
   }
 </style>

@@ -17,6 +17,7 @@
   let toggleSortFirstName = undefined;
   let toggleSortLastName = true;
   let showAlert = false
+  let hasSubmitted = false
 
   onMount(async () => {
     const res = await fetch(RANDOM_USER_API_URL + USER_AMOUNT);
@@ -91,6 +92,7 @@
   };
 </script>
 
+{#if !hasSubmitted}
 <header>
   <h1>Programming 2 (ID786)</h1>
 
@@ -178,14 +180,16 @@
         <Popup close={() => showAlert = false}/>
       {/if}
       <button id="finish-later" on:click|preventDefault={() => showAlert = true}>Finish later</button>
-      <button id="submit" disabled={$tally.length != USER_AMOUNT} type="submit"
+      <button on:click|preventDefault={() => hasSubmitted = true} id="submit" disabled={$tally.length != USER_AMOUNT}
         >Submit attendance</button
       >
     </div>
   </form>
   <SideBarInfo />
 </main>
-
+{:else}
+<em>Submitted Attendance</em>
+{/if}
 <style>
   #finish-grp {
     align-self: flex-end;
@@ -202,7 +206,7 @@
     /* justify-content: space-around; */
     /* display: grid;
     justify-content: space-evenly;
-    grid-template-columns: 1fr 1fr; */
+    grid-template-columns: 1fr 1fr;  */
   }
   th {
     padding: 20px 15px;
@@ -213,6 +217,7 @@
     padding: 12px 15px;
     cursor: pointer;
     font-weight: bold;
+    border-bottom: 1px solid #333;
   }
   table {
     border-collapse: collapse;
