@@ -4,6 +4,7 @@
   import Student from "./lib/Student.svelte";
   import Tally from "./lib/Tally.svelte";
   import SideBarInfo from "./lib/SideBarInfo.svelte";
+  import Popup from "./lib/Popup.svelte";
 
   const RANDOM_USER_API_URL = "https://randomuser.me/api/?results=";
   const USER_AMOUNT = 10;
@@ -15,6 +16,7 @@
   let searchValue;
   let toggleSortFirstName = undefined;
   let toggleSortLastName = true;
+  let showAlert = false
 
   onMount(async () => {
     const res = await fetch(RANDOM_USER_API_URL + USER_AMOUNT);
@@ -132,7 +134,7 @@
             class={toggleSortFirstName === true
               ? "sort-desc"
               : toggleSortFirstName === false
-              ? "sort-asc"
+              ? "sort-desc"
               : "sort"}
             on:click={() => (toggleSortLastName = undefined)}
             on:click={() => (toggleSortFirstName = !toggleSortFirstName)}
@@ -172,7 +174,10 @@
       </tbody>
     </table>
     <div id="finish-grp">
-      <button id="finish-later" on:click|preventDefault>Finish later</button>
+      {#if showAlert}
+        <Popup close={() => showAlert = false}/>
+      {/if}
+      <button id="finish-later" on:click|preventDefault={() => showAlert = true}>Finish later</button>
       <button id="submit" disabled={$tally.length != USER_AMOUNT} type="submit"
         >Submit attendance</button
       >
