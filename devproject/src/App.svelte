@@ -13,8 +13,8 @@
   const CURRENT_WEEK = 8;
 
   let searchValue;
-  let toggleSortFirstName = true;
-  let toggleSortLastName;
+  let toggleSortFirstName = undefined;
+  let toggleSortLastName = true;
 
   onMount(async () => {
     const res = await fetch(RANDOM_USER_API_URL + USER_AMOUNT);
@@ -108,25 +108,33 @@
         <tr>
           <td id="table-options" colspan="7">
             <div id="options">
-                <input
-                  id="student-search"
-                  bind:value={searchValue}
-                  type="text"
-                  placeholder="Search for a student."
-                />
-                <button on:click|preventDefault={() => fillDown()}>Fill down</button
-                  >
-                <button
+              <input
+                id="student-search"
+                bind:value={searchValue}
+                type="text"
+                placeholder="Search for a student."
+              />
+              <button on:click|preventDefault={() => fillDown()}
+                >Fill down</button
+              >
+              <button
                 on:click|preventDefault={() => cancelClass()}
                 id="cancel-btn">Cancel Class</button
               >
-                <button on:click={() => clearAll()} id="clear-btn">Clear All</button
-                >
+              <button on:click={() => clearAll()} id="clear-btn"
+                >Clear All</button
+              >
             </div>
           </td>
         </tr>
         <tr>
           <th
+            class={toggleSortFirstName === true
+              ? "sort-desc"
+              : toggleSortFirstName === false
+              ? "sort-asc"
+              : "sort"}
+            on:click={() => (toggleSortLastName = undefined)}
             on:click={() => (toggleSortFirstName = !toggleSortFirstName)}
             on:click|preventDefault={() =>
               toggleSortFirstName
@@ -134,6 +142,12 @@
                 : sortStudents("first", "desc")}>First name</th
           >
           <th
+            class={toggleSortLastName === true
+              ? "sort-desc"
+              : toggleSortLastName === false
+              ? "sort-asc"
+              : "sort"}
+            on:click={() => (toggleSortFirstName = undefined)}
             on:click={() => (toggleSortLastName = !toggleSortLastName)}
             on:click|preventDefault={() =>
               toggleSortLastName
@@ -158,8 +172,8 @@
       </tbody>
     </table>
     <div id="finish-grp">
-      <button on:click|preventDefault>Finish later</button>
-      <button disabled={$tally.length != USER_AMOUNT} type="submit"
+      <button id="finish-later" on:click|preventDefault>Finish later</button>
+      <button id="submit" disabled={$tally.length != USER_AMOUNT} type="submit"
         >Submit attendance</button
       >
     </div>
@@ -172,7 +186,7 @@
     align-self: flex-end;
     margin-top: 10px;
   }
-  #clear-btn{
+  #clear-btn {
     justify-self: flex-end;
   }
   .time-of-class {
@@ -215,12 +229,16 @@
     display: flex;
     flex-direction: column;
   }
-  #student-search{
+  #student-search {
     margin-right: 5px;
-    padding: 7px 10px 7px 10px;
+    padding: 7px 10px 7px 40px;
     flex-grow: 1;
+    background: url("./public/assets/search-svgrepo-com.svg");
+    background-size: 15px;
+    background-position: 10px center;
+    background-repeat: no-repeat;
   }
-  button {
+  button:not(#finish-later):not(#submit) {
     margin-right: 5px;
     padding: 5px 10px 5px 10px;
     border-radius: 5%;
@@ -230,8 +248,29 @@
     cursor: pointer;
     outline: inherit;
   }
-  #options{
+  #options {
     display: flex;
     padding: 5px;
+  }
+  ::placeholder {
+    margin-left: 20px;
+  }
+  .sort {
+    background: url("../public/assets/sort-svgrepo-com.svg");
+    background-size: 20px;
+    background-position: right center;
+    background-repeat: no-repeat;
+  }
+  .sort-asc {
+    background: url("../public/assets/sort-up-solid-svgrepo-com.svg");
+    background-size: 20px;
+    background-position: right center;
+    background-repeat: no-repeat;
+  }
+  .sort-desc {
+    background: url("../public/assets/sort-down-solid-svgrepo-com.svg");
+    background-size: 20px;
+    background-position: right center;
+    background-repeat: no-repeat;
   }
 </style>

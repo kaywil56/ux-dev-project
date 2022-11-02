@@ -1,6 +1,5 @@
 <script>
   import { currentStudent, tally } from "../store.js";
-
   export let student;
   export let idx;
 
