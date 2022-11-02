@@ -49,7 +49,7 @@
       $students[i].history = classes;
     }
 
-    sortStudents('last', 'asc')
+    sortStudents("last", "asc");
   });
 
   // Sort table ascending by given param
@@ -91,6 +91,7 @@
 
 <header>
   <h1>Programming 2 (ID786)</h1>
+
   <h2>Semester: 2</h2>
   <p class="time-of-class"><b>Week: </b>{CURRENT_WEEK} of {WEEKS_TOTAL}</p>
   <p class="time-of-class"><b>Class: </b>1</p>
@@ -99,23 +100,30 @@
 <Tally />
 <main>
   <form action="/">
-    <div id="table-options">
-      <button on:click|preventDefault={() => cancelClass()} id="cancel-btn"
-        >Class Cancelled</button
-      >
-      <button on:click|preventDefault={() => fillDown()}>Fill down</button>
-      <input
-        class="input-field"
-        bind:value={searchValue}
-        type="text"
-        placeholder="Search for a student."
-      />
-      <button on:click={() => clearAll()} id="clear-btn">Clear All</button>
-    </div>
     <table>
       <thead>
         <tr>
-          <th id="t-header" colspan="7">Students</th>
+          <th id="t-header" colspan="7">Students </th>
+        </tr>
+        <tr>
+          <td id="table-options" colspan="7">
+            <div id="options">
+                <input
+                  id="student-search"
+                  bind:value={searchValue}
+                  type="text"
+                  placeholder="Search for a student."
+                />
+                <button on:click|preventDefault={() => fillDown()}>Fill down</button
+                  >
+                <button
+                on:click|preventDefault={() => cancelClass()}
+                id="cancel-btn">Cancel Class</button
+              >
+                <button on:click={() => clearAll()} id="clear-btn">Clear All</button
+                >
+            </div>
+          </td>
         </tr>
         <tr>
           <th
@@ -164,15 +172,15 @@
     align-self: flex-end;
     margin-top: 10px;
   }
-  #table-options {
-    margin: 10px 0;
+  #clear-btn{
+    justify-self: flex-end;
   }
   .time-of-class {
     display: inline;
   }
   main {
-    display: flex;
-    justify-content: space-around;
+    /* display: flex; */
+    /* justify-content: space-around; */
     /* display: grid;
     justify-content: space-evenly;
     grid-template-columns: 1fr 1fr; */
@@ -199,7 +207,7 @@
     color: #ffffff;
     text-align: left;
   }
-  thead tr:nth-child(2) {
+  thead tr:nth-child(3) {
     background-color: rgb(219, 215, 215);
     text-align: left;
   }
@@ -207,7 +215,23 @@
     display: flex;
     flex-direction: column;
   }
-  #table-options {
+  #student-search{
+    margin-right: 5px;
+    padding: 7px 10px 7px 10px;
+    flex-grow: 1;
+  }
+  button {
+    margin-right: 5px;
+    padding: 5px 10px 5px 10px;
+    border-radius: 5%;
+    color: inherit;
+    border: 1px solid #333;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+  }
+  #options{
     display: flex;
+    padding: 5px;
   }
 </style>
