@@ -18,9 +18,6 @@
   <td>
     {student.name.last}
   </td>
-  <td>
-    {student.login.uuid.slice(0, 6)}
-  </td>
   <td class="status-td">
     <label for="present-radio-button-{idx}"
       >Present <input

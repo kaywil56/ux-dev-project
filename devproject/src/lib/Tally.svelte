@@ -13,5 +13,11 @@
 </script>
 
 <p>
-  Tally: Postive: {positiveCount} | Negative: {negativeCount} | Neutral: {neutralCount}
+  Postive: {positiveCount} | Negative: {negativeCount} | Neutral: {neutralCount}
 </p>
+
+<style>
+  p{
+    display: inline;
+  }
+</style>

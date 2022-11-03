@@ -7,7 +7,7 @@
   import Popup from "./lib/Popup.svelte";
 
   const RANDOM_USER_API_URL = "https://randomuser.me/api/?results=";
-  const USER_AMOUNT = 10;
+  const USER_AMOUNT = 20;
   const STATUSES = ["present", "sick", "online", "absent"];
 
   const WEEKS_TOTAL = 16;
@@ -101,13 +101,12 @@
   <p class="time-of-class"><b>Class: </b>1</p>
   <time class="time-of-class">20/04/2000</time>
 </header>
-<Tally />
 <main>
   <form action="/">
     <table>
       <thead>
         <tr>
-          <th id="t-header" colspan="7">Students </th>
+          <th id="t-header" colspan="7">Students (<Tally />)</th>
         </tr>
         <tr>
           <td id="table-options" colspan="7">
@@ -158,7 +157,6 @@
                 ? sortStudents("last", "asc")
                 : sortStudents("last", "desc")}>Last Name</th
           >
-          <th>Student ID</th>
           <th>Status</th>
           <th>Selected status</th>
         </tr>
@@ -201,13 +199,10 @@
   .time-of-class {
     display: inline;
   }
-  main {
-    /* display: flex; */
-    /* justify-content: space-around; */
-    /* display: grid;
-    justify-content: space-evenly;
-    grid-template-columns: 1fr 1fr;  */
-  }
+  /* main {
+    display: flex;
+    max-height: 100vh;
+  } */
   th {
     padding: 20px 15px;
     text-align: left;
@@ -226,6 +221,10 @@
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
     width: 100%;
   }
+  tbody{
+    height: 100vh;
+    overflow-y: auto;
+    }
   thead tr:first-child {
     background-color: rgb(0, 82, 255);
     color: #ffffff;
