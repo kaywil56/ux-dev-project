@@ -201,7 +201,6 @@
   }
   main {
     display: flex;
-    flex-wrap: wrap;
   }
   th {
     padding: 20px 15px;

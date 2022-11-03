@@ -8,8 +8,7 @@
 <section>
   <div id="sidebar">
     {#if thisPerson}
-      <div>
-        <img src={thisPerson.picture.large} alt="profile" />
+        <!-- <img src={thisPerson.picture.large} alt="profile" /> -->
         <h2>{thisPerson.name.first + " " + thisPerson.name.last}</h2>
         <AttendanceHistory studentHistory={thisPerson.history} />
         <p><b>Student ID: </b>{thisPerson.login.uuid.slice(0, 6)}</p>
@@ -25,7 +24,6 @@
         </address>
         <address><b>State: </b> {thisPerson.location.state}</address>
         <address><b>Postcode: </b> {thisPerson.location.postcode}</address>
-      </div>
     {:else}
       <h2>No student selected</h2>
     {/if}
@@ -33,13 +31,24 @@
 </section>
 
 <style>
-  /* section {
-    position: absolute;
-    bottom: 0;
-    z-index: 100;
-  } */
+  @media only screen and (max-width: 600px) {
+    section {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      z-index: 100;
+    }
+
+    #sidebar {
+      display: flex;
+      flex-direction: row;
+      background-color: gray;
+      height: 30vh;
+    }
+  }
 
   #sidebar {
     display: flex;
+    flex-direction: column;
   }
 </style>
