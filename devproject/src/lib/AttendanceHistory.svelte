@@ -54,8 +54,6 @@
     background-color: rgb(219, 215, 215);
     text-align: left;
   }
-  td {
-  }
   tr:nth-of-type(even) {
     background-color: #f2f2f2;
   }

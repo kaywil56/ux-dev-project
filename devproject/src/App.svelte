@@ -199,10 +199,10 @@
   .time-of-class {
     display: inline;
   }
-  /* main {
+  main {
     display: flex;
-    max-height: 100vh;
-  } */
+    flex-wrap: wrap;
+  }
   th {
     padding: 20px 15px;
     text-align: left;
@@ -222,7 +222,7 @@
     width: 100%;
   }
   tbody{
-    height: 100vh;
+    height: 100px;
     overflow-y: auto;
     }
   thead tr:first-child {

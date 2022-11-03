@@ -17,7 +17,7 @@
         <address><b>Email: </b> {thisPerson.email}</address>
         <p><b>Phone: </b> {thisPerson.phone}</p>
         <p><b>Cell: </b> {thisPerson.cell}</p>
-        <p><b>DOB: </b>{thisPerson.dob.date} ({thisPerson.dob.age})</p>
+        <p><b>DOB: </b>{new Date(thisPerson.dob.date).toDateString()}</p>
         <address>
           <b>Street: </b>
           {thisPerson.location.street.number}
@@ -34,9 +34,9 @@
 
 <style>
   /* section {
-    height: 100vh;
-    position: sticky;
-    top: 0;
+    position: absolute;
+    bottom: 0;
+    z-index: 100;
   } */
 
   #sidebar {
