@@ -93,14 +93,14 @@
 </script>
 
 {#if !hasSubmitted}
-<header>
+<!-- <header>
   <h1>Programming 2 (ID786)</h1>
 
   <h2>Semester: 2</h2>
   <p class="time-of-class"><b>Week: </b>{CURRENT_WEEK} of {WEEKS_TOTAL}</p>
   <p class="time-of-class"><b>Class: </b>1</p>
   <time class="time-of-class">20/04/2000</time>
-</header>
+</header> -->
 <main>
   <form action="/">
     <table>
@@ -108,7 +108,7 @@
         <tr>
           <th id="t-header" colspan="7">Students (<Tally />)</th>
         </tr>
-        <tr>
+        <!-- <tr>
           <td id="table-options" colspan="7">
             <div id="options">
               <input
@@ -129,7 +129,7 @@
               >
             </div>
           </td>
-        </tr>
+        </tr> -->
         <tr>
           <th
             class={toggleSortFirstName === true
@@ -196,19 +196,19 @@
   #clear-btn {
     justify-self: flex-end;
   }
-  .time-of-class {
+  /* .time-of-class {
     display: inline;
-  }
+  } */
   main {
     display: flex;
   }
   th {
-    padding: 20px 15px;
+    /* padding: 20px 15px; */
     text-align: left;
     font-weight: 500;
     font-size: 12px;
     text-transform: uppercase;
-    padding: 12px 15px;
+    /* padding: 12px 15px; */
     cursor: pointer;
     font-weight: bold;
     border-bottom: 1px solid #333;
@@ -216,9 +216,9 @@
   table {
     border-collapse: collapse;
     font-size: 0.9em;
-    min-width: 400px;
+    /* min-width: 400px; */
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-    width: 100%;
+    /* width: 100%; */
   }
   tbody{
     height: 100px;

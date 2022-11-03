@@ -31,19 +31,17 @@
 </table>
 <style>
   th {
-    padding: 20px 15px;
     text-align: left;
     font-weight: 500;
     font-size: 12px;
     text-transform: uppercase;
-    padding: 12px 15px;
+    /* padding: 12px 15px; */
   }
   table {
     border-collapse: collapse;
     margin: 25px 0;
     font-size: 0.9em;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-    width: 100%;
   }
   thead tr:first-child {
     background-color: rgb(0, 82, 255);

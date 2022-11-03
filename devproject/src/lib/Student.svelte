@@ -64,7 +64,7 @@
     /* flex-direction: column; */
   }
   td {
-    padding: 12px 15px;
+    /* padding: 12px 15px; */
   }
   tr:nth-of-type(even) {
     background-color: #f2f2f2;
