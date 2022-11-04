@@ -291,5 +291,12 @@
       padding-left:5px;
       background: none;
     }
+    th{
+      padding: 10px;
+    }
+    #options{
+      padding: 0;
+    }
+
   }
 </style>

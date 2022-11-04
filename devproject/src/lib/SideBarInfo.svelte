@@ -50,7 +50,7 @@
       display: flex;
       flex-direction: row;
       background-color: gray;
-      height: 30vh;
+      height: 35vh;
     }
 
     p,address{
