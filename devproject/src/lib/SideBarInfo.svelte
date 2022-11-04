@@ -42,7 +42,7 @@
       position: fixed;
       bottom: 0;
       width: 100%;
-      z-index: 100;
+      z-index: 2;
       display: flex;
       justify-content: center;
       align-items: center;

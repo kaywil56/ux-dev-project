@@ -1,12 +1,11 @@
 <script>
   import { onMount } from "svelte";
-  import { students, currentStudent, tally } from "./store";
-  // import Student from "./lib/Student.svelte";
-  // import Tally from "./lib/Tally.svelte";
+  import { students, tally } from "./store";
   import SideBarInfo from "./lib/SideBarInfo.svelte";
   import Popup from "./lib/Popup.svelte";
   import a11yChecker from "a11y-checker";
   import StudentTable from "./lib/StudentTable.svelte";
+  import AreYouSureModal from "./lib/AreYouSureModal.svelte";
 
   const RANDOM_USER_API_URL = "https://randomuser.me/api/?results=";
   const USER_AMOUNT = 20;
@@ -15,11 +14,9 @@
   const WEEKS_TOTAL = 16;
   const CURRENT_WEEK = 8;
 
-  // let searchValue;
-  // let toggleSortFirstName = undefined;
-  // let toggleSortLastName = true;
   let showAlert = false;
   let hasSubmitted = false;
+  let isSubmit;
 
   onMount(async () => {
     const res = await fetch(RANDOM_USER_API_URL + USER_AMOUNT);
@@ -69,77 +66,6 @@
   <main>
     <form action="/">
       <StudentTable userAmount={USER_AMOUNT} />
-      <!-- <table>
-        <thead>
-          <tr>
-            <th id="t-header" colspan="7">Students (<Tally />)</th>
-          </tr>
-          <tr>
-            <td id="table-options" colspan="7">
-              <div id="options">
-                <input
-                  id="student-search"
-                  bind:value={searchValue}
-                  type="text"
-                  placeholder="Search."
-                />
-                <button on:click|preventDefault={() => fillDown()}
-                  >Fill down</button
-                >
-                <button
-                  on:click|preventDefault={() => cancelClass()}
-                  id="cancel-btn">Cancel Class</button
-                >
-                <button
-                  on:click|preventDefault={() => clearAll()}
-                  id="clear-btn">Clear All</button
-                >
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <th
-              class={toggleSortFirstName === true
-                ? "sort-desc"
-                : toggleSortFirstName === false
-                ? "sort-desc"
-                : "sort"}
-              on:click={() => (toggleSortLastName = undefined)}
-              on:click={() => (toggleSortFirstName = !toggleSortFirstName)}
-              on:click|preventDefault={() =>
-                toggleSortFirstName
-                  ? sortStudents("first", "asc")
-                  : sortStudents("first", "desc")}>First name</th
-            >
-            <th
-              class={toggleSortLastName === true
-                ? "sort-desc"
-                : toggleSortLastName === false
-                ? "sort-asc"
-                : "sort"}
-              on:click={() => (toggleSortFirstName = undefined)}
-              on:click={() => (toggleSortLastName = !toggleSortLastName)}
-              on:click|preventDefault={() =>
-                toggleSortLastName
-                  ? sortStudents("last", "asc")
-                  : sortStudents("last", "desc")}>Last Name</th
-            >
-            <th>Status</th>
-            <th>Selected status</th>
-          </tr>
-        </thead>
-        <tbody>
-          {#each $students as student, idx}
-            {#if searchValue}
-              {#if (student.name.first.toUpperCase() + " " + student.name.last.toUpperCase()).includes(searchValue.toUpperCase())}
-                <Student {student} {idx} />
-              {/if}
-            {:else}
-              <Student {student} {idx} />
-            {/if}
-          {/each}
-        </tbody>
-      </table> -->
       <div id="finish-grp">
         {#if showAlert}
           <Popup close={() => (showAlert = false)} />
@@ -150,10 +76,17 @@
           >Finish later</button
         >
         <button
-          on:click|preventDefault={() => (hasSubmitted = true)}
+          on:click|preventDefault={() => (isSubmit = true)}
           id="submit"
           disabled={$tally.length != USER_AMOUNT}>Submit attendance</button
         >
+        {#if isSubmit}
+          <AreYouSureModal
+            message={"submit the attendance"}
+            close={() => (isSubmit = false)}
+            method={() => hasSubmitted =true}
+          />
+        {/if}
       </div>
     </form>
     <SideBarInfo />
@@ -167,12 +100,6 @@
     align-self: flex-end;
     margin-top: 10px;
   }
-  #clear-btn {
-    justify-self: flex-end;
-  }
-  /* .time-of-class {
-    display: inline;
-  } */
   main {
     display: inline-flex;
   }
@@ -212,18 +139,6 @@
     }
     form {
       margin-bottom: 40vh;
-    }
-  }
-  @media only screen and (max-width: 400px) {
-    #student-search {
-      padding-left: 5px;
-      background: none;
-    }
-    th {
-      padding: 10px;
-    }
-    #options {
-      padding: 0;
     }
   }
 </style>

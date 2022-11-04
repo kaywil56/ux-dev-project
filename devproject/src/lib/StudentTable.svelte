@@ -3,12 +3,16 @@
   import { students, currentStudent, tally } from "../store.js";
   import Student from "../lib/Student.svelte";
   import Tally from "../lib/Tally.svelte";
+  import AreYouSureModal from "./AreYouSureModal.svelte";
 
   export let userAmount;
 
   let searchValue;
   let toggleSortFirstName = undefined;
   let toggleSortLastName = true;
+  let isClearAll;
+  let isCancelClass;
+
 
   // Sort table ascending by given param
   const sortStudents = (sortBy, order) => {
@@ -66,12 +70,22 @@
             placeholder="Search."
           />
           <button on:click|preventDefault={() => fillDown()}>Fill down</button>
-          <button on:click|preventDefault={() => cancelClass()} id="cancel-btn"
+          <button on:click|preventDefault={() => isCancelClass = true} id="cancel-btn"
             >Cancel Class</button
           >
-          <button on:click|preventDefault={() => clearAll()} id="clear-btn"
+          {#if isCancelClass}
+          <AreYouSureModal
+            message={"cancel class"}
+            close={() => (isCancelClass = false)}
+            method={cancelClass}
+          />
+        {/if}
+          <button on:click|preventDefault={() => isClearAll = true} id="clear-btn"
             >Clear All</button
           >
+          {#if isClearAll}
+            <AreYouSureModal message={"clear the attendance"} close={() => isClearAll = false} method={clearAll} />
+          {/if}
         </div>
       </td>
     </tr>
