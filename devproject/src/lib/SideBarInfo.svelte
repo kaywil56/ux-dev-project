@@ -33,6 +33,19 @@
     position: sticky;
     top: 0;
   }
+  @media only screen and (max-width: 1083px) {
+    h2{
+      font-size: medium;
+    }
+
+    p,address{
+      font-size: 14px;
+    }
+
+    img{
+      height: 70px;
+    }
+  }
 
   @media only screen and (max-width: 600px) {
     h2{
@@ -63,6 +76,19 @@
 
     img{
       height: 70px;
+    }
+  }
+  @media only screen and (max-width: 375px) {
+    h2{
+      font-size: 15px;
+    }
+
+    p,address{
+      font-size: 12px;
+    }
+
+    img{
+      height: 60px;
     }
   }
 </style>
