@@ -218,7 +218,7 @@
     font-size: 0.9em;
     /* min-width: 400px; */
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-    /* width: 100%; */
+    width: 100%;
   }
   tbody{
     height: 100px;
@@ -280,5 +280,11 @@
     background-size: 20px;
     background-position: right center;
     background-repeat: no-repeat;
+  }
+
+  @media only screen and (max-width: 600px) {
+    form{
+      margin-bottom: 35vh
+    }
   }
 </style>

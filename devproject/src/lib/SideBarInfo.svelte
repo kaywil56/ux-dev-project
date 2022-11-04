@@ -10,8 +10,7 @@
     {#if thisPerson}
       <div>
         <img src={thisPerson.picture.large} alt="profile" />
-        <h2>{thisPerson.name.first + " " + thisPerson.name.last}</h2>
-        <p><b>Student ID: </b>{thisPerson.login.uuid.slice(0, 6)}</p>
+        <h2>{thisPerson.name.first + " " + thisPerson.name.last} ({thisPerson.login.uuid.slice(0, 6)})</h2>
         <p><b>Username:</b>{thisPerson.login.username}</p>
         <address><b>Email: </b> {thisPerson.email}</address>
         <p><b>Phone: </b> {thisPerson.phone}</p>
@@ -41,12 +40,15 @@
       bottom: 0;
       width: 100%;
       z-index: 100;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
     #sidebar {
       width: 100%;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
+      display: flex;
+      flex-direction: row;
       background-color: gray;
       height: 30vh;
     }

@@ -43,6 +43,7 @@
     /* margin: 25px 0; */
     font-size: 0.9em;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    margin: 10px;
   }
   thead tr:first-child {
     background-color: rgb(0, 82, 255);
