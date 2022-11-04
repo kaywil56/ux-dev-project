@@ -27,8 +27,11 @@
 <style>
   #sidebar {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: wrap;
     padding: 10px;
+    position: sticky;
+    top: 0;
   }
 
   @media only screen and (max-width: 600px) {
@@ -50,15 +53,16 @@
       display: flex;
       flex-direction: row;
       background-color: gray;
+      flex-wrap: nowrap;
       height: 35vh;
     }
 
     p,address{
-      font-size: 11px;
+      font-size: 13px;
     }
 
     img{
-      height: 50px;
+      height: 70px;
     }
   }
 </style>

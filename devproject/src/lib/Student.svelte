@@ -64,7 +64,7 @@
     /* flex-direction: column; */
   }
   td {
-    /* padding: 12px 15px; */
+    padding: 12px 15px;
   }
   tr:nth-of-type(even) {
     background-color: #f2f2f2;
@@ -75,5 +75,11 @@
 
   #selected {
     background-color: rgb(161, 161, 161);
+  }
+
+  @media only screen and (max-width: 600px) {
+    td {
+      padding: 6px 10px;
+    }
   }
 </style>
