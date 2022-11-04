@@ -42,7 +42,7 @@
       name="more-options"
       id="more-options-select"
     >
-      <option value={undefined} selected>--More options--</option>
+      <option value={undefined} selected>More</option>
       <option value={"online"}>Online</option>
       <option value={"sick"}>Sick</option>
       <option value={"explained"}>Explained</option>
@@ -52,7 +52,7 @@
     {#if student.status}
       {student.status}
     {:else}
-      None selected
+      None
     {/if}
   </td>
 </tr>
