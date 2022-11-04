@@ -108,14 +108,14 @@
         <tr>
           <th id="t-header" colspan="7">Students (<Tally />)</th>
         </tr>
-        <!-- <tr>
+        <tr>
           <td id="table-options" colspan="7">
             <div id="options">
               <input
                 id="student-search"
                 bind:value={searchValue}
                 type="text"
-                placeholder="Search for a student."
+                placeholder="Search."
               />
               <button on:click|preventDefault={() => fillDown()}
                 >Fill down</button
@@ -129,7 +129,7 @@
               >
             </div>
           </td>
-        </tr> -->
+        </tr>
         <tr>
           <th
             class={toggleSortFirstName === true
@@ -208,7 +208,7 @@
     font-weight: 500;
     font-size: 12px;
     text-transform: uppercase;
-    /* padding: 12px 15px; */
+    padding: 12px 15px;
     cursor: pointer;
     font-weight: bold;
     border-bottom: 1px solid #333;
@@ -216,7 +216,6 @@
   table {
     border-collapse: collapse;
     font-size: 0.9em;
-    /* min-width: 400px; */
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
     width: 100%;
   }
@@ -285,6 +284,12 @@
   @media only screen and (max-width: 600px) {
     form{
       margin-bottom: 35vh
+    }
+  }
+  @media only screen and (max-width: 400px) {
+    #student-search{
+      padding-left:5px;
+      background: none;
     }
   }
 </style>

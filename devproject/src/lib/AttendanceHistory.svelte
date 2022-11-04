@@ -36,11 +36,10 @@
     font-weight: 500;
     font-size: 12px;
     text-transform: uppercase;
-    /* padding: 12px 15px; */
+    padding: 12px 15px;
   }
   table {
     border-collapse: collapse;
-    /* margin: 25px 0; */
     font-size: 0.9em;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
     margin: 10px;
@@ -63,5 +62,8 @@
     table, th{
       font-size: 12px;
     }
+    th, td {
+    padding: 3px;
+  }
   }
 </style>
