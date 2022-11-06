@@ -17,8 +17,9 @@
   let showAlert = false;
   let hasSubmitted = false;
   let isSubmit;
+  let isMarked;
 
-  // Initialize all  
+  // Initialize all
   onMount(async () => {
     // Fetch users from random user api
     const res = await fetch(RANDOM_USER_API_URL + USER_AMOUNT);
@@ -30,7 +31,6 @@
       student["status"] = undefined;
     });
 
-    
     let classes;
     let class1;
     let class2;
@@ -51,6 +51,12 @@
     }
     a11yChecker();
   });
+
+  // const allMarked = () => {
+  //   $students.forEach((student) => {
+  //     if(student.stat)
+  //   })
+  // }
 </script>
 
 {#if !hasSubmitted}
@@ -76,13 +82,13 @@
         <button
           on:click|preventDefault={() => (isSubmit = true)}
           id="submit"
-          disabled={$tally.length != USER_AMOUNT}>Submit attendance</button
+          disabled={$students.filter((student) => student.status).length != USER_AMOUNT}>Submit attendance</button
         >
         {#if isSubmit}
           <AreYouSureModal
             message={"submit the attendance"}
             close={() => (isSubmit = false)}
-            method={() => hasSubmitted =true}
+            method={() => (hasSubmitted = true)}
           />
         {/if}
       </div>

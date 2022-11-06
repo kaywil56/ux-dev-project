@@ -1,6 +1,9 @@
 <script>
+  // Function to close modal from parent
   export let close;
+  // Function passed by parent (either cancel class / clear all / submit attendance)
   export let method;
+  // Message passed by parent
   export let message;
 </script>
 

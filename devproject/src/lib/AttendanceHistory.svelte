@@ -1,4 +1,5 @@
 <script>
+  // Array of students history
   export let studentHistory;
 </script>
 
