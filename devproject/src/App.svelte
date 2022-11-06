@@ -56,8 +56,7 @@
 
 {#if !hasSubmitted}
   <header>
-    <h1>Programming 2 (ID786)</h1>
-
+    <h1>Programming 2 (ID786) - Stream B</h1>
     <h2>Semester: 2</h2>
     <p class="time-of-class"><b>Week: </b>{CURRENT_WEEK} of {WEEKS_TOTAL}</p>
     <p class="time-of-class"><b>Class: </b>1</p>

@@ -1,15 +1,12 @@
 <script>
-  import { tally } from "../store.js";
+  import { students } from "../store.js";
   let positiveCount;
   let negativeCount;
   let neutralCount;
 
-  // Whenever the tally changes, re-count the amount of positives, negatives and neutrals
-  // in the tally store
-
-  $: positiveCount = $tally.filter((status) => status == "present" || status == "online" || status == "canceled").length;
-  $: negativeCount = $tally.filter((status) => status == "absent").length;
-  $: neutralCount = $tally.filter((status) => status == "sick" || status == "explained").length;
+  $: positiveCount = $students.filter((student) => student.status == "present" || student.status == "online" || student.status == "canceled").length;
+  $: negativeCount = $students.filter((student) => student.status == "absent").length;
+  $: neutralCount = $students.filter((student) => student.status == "sick" || student.status == "explained").length;
 </script>
 
 <p>

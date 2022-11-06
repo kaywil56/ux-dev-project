@@ -8,11 +8,10 @@
   export let userAmount;
 
   let searchValue;
-  let toggleSortFirstName = undefined;
+  let toggleSortFirstName = true;
   let toggleSortLastName = true;
   let isClearAll;
   let isCancelClass;
-
 
   // Sort table ascending by given param
   const sortStudents = (sortBy, order) => {
@@ -69,7 +68,7 @@
             type="text"
             placeholder="Search."
           />
-          <button on:click|preventDefault={() => fillDown()}>Fill down</button>
+          <button id="fill-down" on:click|preventDefault={() => fillDown()}>Fill down</button>
           <button on:click|preventDefault={() => isCancelClass = true} id="cancel-btn"
             >Cancel Class</button
           >
@@ -91,12 +90,7 @@
     </tr>
     <tr>
       <th
-        class={toggleSortFirstName === true
-          ? "sort-desc"
-          : toggleSortFirstName === false
-          ? "sort-desc"
-          : "sort"}
-        on:click={() => (toggleSortLastName = undefined)}
+        class="sort"
         on:click={() => (toggleSortFirstName = !toggleSortFirstName)}
         on:click|preventDefault={() =>
           toggleSortFirstName
@@ -104,12 +98,7 @@
             : sortStudents("first", "desc")}>First name</th
       >
       <th
-        class={toggleSortLastName === true
-          ? "sort-desc"
-          : toggleSortLastName === false
-          ? "sort-asc"
-          : "sort"}
-        on:click={() => (toggleSortFirstName = undefined)}
+        class="sort"
         on:click={() => (toggleSortLastName = !toggleSortLastName)}
         on:click|preventDefault={() =>
           toggleSortLastName
@@ -135,7 +124,6 @@
 
 <style>
   th {
-    /* padding: 20px 15px; */
     text-align: left;
     font-weight: 500;
     font-size: 12px;
@@ -168,7 +156,7 @@
     margin-right: 5px;
     padding: 7px 10px 7px 40px;
     flex-grow: 1;
-    background: url("./public/assets/search-svgrepo-com.svg");
+    background: url("../assets/search-svgrepo-com.svg");
     background-size: 15px;
     background-position: 10px center;
     background-repeat: no-repeat;
@@ -178,31 +166,13 @@
     padding: 5px;
   }
   .sort {
-    background: url("../public/assets/sort-svgrepo-com.svg");
-    background-size: 20px;
-    background-position: right center;
-    background-repeat: no-repeat;
-  }
-  .sort-asc {
-    background: url("../public/assets/sort-up-solid-svgrepo-com.svg");
-    background-size: 20px;
-    background-position: right center;
-    background-repeat: no-repeat;
-  }
-  .sort-desc {
-    background: url("../public/assets/sort-down-solid-svgrepo-com.svg");
-    background-size: 20px;
+    background: url("../assets/sort-svgrepo-com.svg");
+    background-size: 15px;
     background-position: right center;
     background-repeat: no-repeat;
   }
   @media only screen and (max-width: 600px) {
     .sort {
-      background-size: 17px;
-    }
-    .sort-asc {
-      background-size: 17px;
-    }
-    .sort-desc {
       background-size: 17px;
     }
   }

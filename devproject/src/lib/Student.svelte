@@ -1,5 +1,5 @@
 <script>
-  import { currentStudent, tally } from "../store.js";
+  import { currentStudent, tally, students } from "../store.js";
   export let student;
   export let idx;
 
@@ -24,7 +24,7 @@
         type="radio"
         id="present-radio-button-{idx}"
         name="status-radio-grp-{idx}"
-        bind:group={student.status}
+        bind:group={$students[idx].status}
         value="present"
       /></label
     >
@@ -33,12 +33,12 @@
         type="radio"
         id="absent-radio-button-{idx}"
         name="status-radio-grp-{idx}"
-        bind:group={student.status}
+        bind:group={$students[idx].status}
         value={"absent"}
       /></label
     >
     <select
-      bind:value={student.status}
+      bind:value={$students[idx].status}
       name="more-options"
       id="more-options-select"
     >
