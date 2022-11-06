@@ -18,20 +18,19 @@
   let hasSubmitted = false;
   let isSubmit;
 
+  // Initialize all  
   onMount(async () => {
+    // Fetch users from random user api
     const res = await fetch(RANDOM_USER_API_URL + USER_AMOUNT);
     let studentList = await res.json();
     studentList = studentList.results;
     $students = studentList;
-    // Sort students by first name ascending on load
-    $students = $students.sort((a, b) =>
-      a["name"]["first"].localeCompare(b["name"]["first"])
-    );
     // Init a status field for each student
     $students.forEach((student) => {
       student["status"] = undefined;
     });
 
+    
     let classes;
     let class1;
     let class2;

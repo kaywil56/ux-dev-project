@@ -1,11 +1,7 @@
 <script>
-  import { currentStudent, tally, students } from "../store.js";
+  import { currentStudent, students } from "../store.js";
   export let student;
   export let idx;
-
-  $: if (student.status) {
-    $tally[idx] = student.status;
-  }
 </script>
 
 <tr
@@ -42,7 +38,7 @@
       name="more-options"
       id="more-options-select"
     >
-      <option value={undefined} selected>More</option>
+      <option value={undefined}>More</option>
       <option value={"online"}>Online</option>
       <option value={"sick"}>Sick</option>
       <option value={"explained"}>Explained</option>
@@ -58,6 +54,9 @@
 </tr>
 
 <style>
+  select::selec{
+    color: white;
+  }
   .status-td {
     display: flex;
     flex-wrap: wrap;

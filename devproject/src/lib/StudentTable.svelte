@@ -6,19 +6,23 @@
   import AreYouSureModal from "./AreYouSureModal.svelte";
 
   export let userAmount;
-
+  // Value for the search bar input
   let searchValue;
+  // Value for toggle sort asc / desc (first name)
   let toggleSortFirstName = true;
+   // Value for toggle sort asc / desc (last name)
   let toggleSortLastName = true;
   let isClearAll;
   let isCancelClass;
 
   // Sort table ascending by given param
   const sortStudents = (sortBy, order) => {
+    // Sort asc
     if (order == "asc") {
       $students = $students.sort((a, b) =>
         a["name"][sortBy].localeCompare(b["name"][sortBy])
       );
+    // Sort desc  
     } else {
       $students = $students.sort((a, b) =>
         b["name"][sortBy].localeCompare(a["name"][sortBy])
@@ -35,6 +39,7 @@
     }
   };
 
+  // Apply cancel status to each student
   const cancelClass = () => {
     for (let i = 0; i < userAmount; i++) {
       $students[i].status = "canceled";
@@ -49,6 +54,7 @@
     }
   };
 
+  // Sort students by last name asc by default
   onMount(async () => {
     sortStudents("last", "asc");
   });

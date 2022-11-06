@@ -7,12 +7,13 @@
   onMount(async () => {
     showPopUp();
   });
-
+  
+  // start time update after popup modal show
   const showPopUp = () => {
-    // start time update after popup modal show
     start_calling = setInterval(countdownTime, 1000); // call every one sec
   };
 
+  // Once time reaches 2 close notifiction
   const countdownTime = () => {
     time++;
     if (time == 2) {
