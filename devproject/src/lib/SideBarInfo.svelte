@@ -65,9 +65,10 @@
       width: 100%;
       display: flex;
       flex-direction: row;
-      background-color: gray;
+      background-color: white;
       flex-wrap: nowrap;
       height: 35vh;
+      border-top: 3px solid #333;
     }
 
     p,address{

@@ -8,7 +8,7 @@
   import AreYouSureModal from "./lib/AreYouSureModal.svelte";
 
   const RANDOM_USER_API_URL = "https://randomuser.me/api/?results=";
-  const USER_AMOUNT = 20;
+  const USER_AMOUNT = 15;
   const STATUSES = ["present", "sick", "online", "absent"];
 
   const WEEKS_TOTAL = 16;
@@ -17,7 +17,6 @@
   let showAlert = false;
   let hasSubmitted = false;
   let isSubmit;
-  let isMarked;
 
   // Initialize all
   onMount(async () => {
@@ -52,20 +51,14 @@
     a11yChecker();
   });
 
-  // const allMarked = () => {
-  //   $students.forEach((student) => {
-  //     if(student.stat)
-  //   })
-  // }
 </script>
 
 {#if !hasSubmitted}
   <header>
     <h1>Programming 2 (ID786) - Stream B</h1>
-    <h2>Semester: 2</h2>
-    <p class="time-of-class"><b>Week: </b>{CURRENT_WEEK} of {WEEKS_TOTAL}</p>
-    <p class="time-of-class"><b>Class: </b>1</p>
-    <time class="time-of-class">20/04/2000</time>
+    <p class="time-of-class"><b>Week: </b>{CURRENT_WEEK} of {WEEKS_TOTAL}</p> | 
+    <p class="time-of-class"><b>Class: </b>1</p> |
+    <time class="time-of-class"><b>Date: </b>20/04/2000</time>
   </header>
   <main>
     <form action="/">
@@ -100,6 +93,27 @@
 {/if}
 
 <style>
+    button{
+    margin: 5px 5px 10px 5px;
+    padding: 5px 10px 5px 10px;
+    border-radius: 5%;
+    color: inherit;
+    border: 1px solid #333;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+  }
+
+  button:disabled{
+    opacity: 50%;
+    cursor:default;
+  }
+  header{
+    margin-bottom: 10px;
+  }
+  .time-of-class{
+    display: inline;
+  }
   #finish-grp {
     align-self: flex-end;
     margin-top: 10px;
@@ -111,17 +125,6 @@
   form {
     display: flex;
     flex-direction: column;
-  }
-
-  button:not(#finish-later):not(#submit) {
-    margin-right: 5px;
-    padding: 5px 10px 5px 10px;
-    border-radius: 5%;
-    color: inherit;
-    border: 1px solid #333;
-    font: inherit;
-    cursor: pointer;
-    outline: inherit;
   }
 
   ::placeholder {

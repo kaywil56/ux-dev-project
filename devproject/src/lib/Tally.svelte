@@ -11,7 +11,7 @@
 </script>
 
 <p>
-  Postive: {positiveCount} | Negative: {negativeCount} | Neutral: {neutralCount}
+  Postive: {positiveCount} | Neutral: {neutralCount} | Negative: {negativeCount} 
 </p>
 
 <style>

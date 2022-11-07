@@ -54,9 +54,6 @@
 </tr>
 
 <style>
-  select::selec{
-    color: white;
-  }
   .status-td {
     display: flex;
     flex-wrap: wrap;
@@ -70,10 +67,13 @@
   }
   tr:hover {
     background-color: rgb(206, 206, 206);
+    border-bottom: 1px solid #333;
   }
 
   #selected {
-    background-color: rgb(161, 161, 161);
+    background-color: #333;
+    color: white;
+    border: 1px solid white;
   }
 
   @media only screen and (max-width: 600px) {

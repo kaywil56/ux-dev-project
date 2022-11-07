@@ -129,6 +129,34 @@
 </table>
 
 <style>
+  button{
+    margin-right: 5px;
+    padding: 5px 10px 5px 10px;
+    border-radius: 5%;
+    color: inherit;
+    border: 1px solid #333;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+  }
+  #fill-down{
+    border: 1px solid blue;
+  }
+  #clear-btn{
+    border: 1px solid red;
+  }
+  #cancel-btn{
+    border: 1px solid orange;    
+  }
+  #student-search {
+    margin-right: 5px;
+    padding: 7px 10px 7px 40px;
+    flex-grow: 1;
+    background: url("../assets/search-svgrepo-com.svg");
+    background-size: 15px;
+    background-position: 10px center;
+    background-repeat: no-repeat;
+  }
   th {
     text-align: left;
     font-weight: 500;
@@ -157,15 +185,6 @@
   thead tr:nth-child(3) {
     background-color: rgb(219, 215, 215);
     text-align: left;
-  }
-  #student-search {
-    margin-right: 5px;
-    padding: 7px 10px 7px 40px;
-    flex-grow: 1;
-    background: url("../assets/search-svgrepo-com.svg");
-    background-size: 15px;
-    background-position: 10px center;
-    background-repeat: no-repeat;
   }
   #options {
     display: flex;
