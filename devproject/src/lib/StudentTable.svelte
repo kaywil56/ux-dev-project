@@ -152,7 +152,7 @@
     margin-right: 5px;
     padding: 7px 10px 7px 40px;
     flex-grow: 1;
-    background: url("../assets/search-svgrepo-com.svg");
+    background: url("search-svgrepo-com.svg");
     background-size: 15px;
     background-position: 10px center;
     background-repeat: no-repeat;
@@ -191,7 +191,7 @@
     padding: 5px;
   }
   .sort {
-    background: url("../assets/sort-svgrepo-com.svg");
+    background: url("sort-svgrepo-com.svg");
     background-size: 15px;
     background-position: right center;
     background-repeat: no-repeat;

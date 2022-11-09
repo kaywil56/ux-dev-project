@@ -46,7 +46,7 @@
   </td>
   <td>
     {#if student.status}
-      {student.status}
+     <b>{student.status}</b>
     {:else}
       None
     {/if}
@@ -57,7 +57,6 @@
   .status-td {
     display: flex;
     flex-wrap: wrap;
-    /* flex-direction: column; */
   }
   td {
     padding: 12px 15px;
