@@ -5,6 +5,8 @@
   import Tally from "../lib/Tally.svelte";
   import AreYouSureModal from "./AreYouSureModal.svelte";
 
+  // import sortIcon from ''
+
   export let userAmount;
   // Value for the search bar input
   let searchValue;
@@ -152,7 +154,7 @@
     margin-right: 5px;
     padding: 7px 10px 7px 40px;
     flex-grow: 1;
-    background: url("search-svgrepo-com.svg");
+    background: url("../../assets/search-svgrepo-com.svg");
     background-size: 15px;
     background-position: 10px center;
     background-repeat: no-repeat;
@@ -191,7 +193,7 @@
     padding: 5px;
   }
   .sort {
-    background: url("sort-svgrepo-com.svg");
+    background: url('../../assets/sort-svgrepo-com.svg');
     background-size: 15px;
     background-position: right center;
     background-repeat: no-repeat;
